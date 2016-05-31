@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <link href="WinJS/css/ui-light.css" rel="stylesheet">
+    <script src="WinJS/js/base.min.js"></script>
+    <script src="WinJS/js/ui.min.js"></script>
+    <link type="text/css" rel="prefetch" href="css/styles.css" media="all">
+    <link type="text/css" rel="stylesheet" href="css/styles.css" media="all">
+    <link rel="dns-prefetch" href="http://quillaur.azurewebsites.net/">
+    <script src="js/actions.js"></script>
+    <!--[if lt IE 9]>
+        <link type="text/css" rel="stylesheet" href="css/ie8styles.css" media="screen">
+    <![endif]-->
+    <title>Скриншоты | Crossword Creator</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+</head>
+<body>
+    <div class="simple_ItemTemplate" data-win-control="WinJS.Binding.Template" style="display: none">
+        <div class="overlaidItemTemplate">
+            <img class="image" data-win-bind="src: picture; alt: title" />
+            <div class="overlay">
+                <h2 class="win-h2 ItemTitle" data-win-bind="textContent: title"></h2>
+            </div>
+        </div>
+    </div>
+    <div id="simple_FlipView" class="flipView" data-win-control="WinJS.UI.FlipView"
+         data-win-options="{
+        itemDataSource: DefaultData.bindingList.dataSource,
+        itemTemplate: select('.simple_ItemTemplate')
+     }">
+    </div>
+</body>
+</html>

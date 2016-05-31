@@ -1,0 +1,246 @@
+body {
+    font-family: Segoe UI, sans-serif;
+}
+
+#subwrapper, #iframe {
+    visibility: collapse;
+}
+
+#list {
+    margin-top: -410px;
+}
+
+header {
+    width: auto;
+    height: 100px;
+    background-color: #0071C4;
+    margin-left: -8px;
+    margin-right: -8px;
+    margin-top: -16px;
+    padding: 8px 8px 0px 8px;
+}
+
+header div h1 {
+    font-family: Segoe UI Semibold, sans-serif;
+    font-size: 24px;
+    color: white;
+}
+
+video {
+    width: 100%;
+}
+
+nav {
+    margin-left: -10px;
+}
+
+#menu li a {
+    color: white;
+    text-decoration: none;
+    padding: 8px 10px 12px 10px;
+}
+
+#menu {
+    list-style: none;
+    padding: 0px;
+}
+
+footer {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+#menu {
+    list-style: none;
+}
+
+#menu li {
+    font-family: Segoe UI;
+    font-size: 18px;
+    color: white;
+    display: inline;
+    text-decoration: none;
+}
+
+#menu li a:hover {
+    background-color: #005999;
+}
+
+h2 {
+    font-size: 1.5em;
+    font-weight: 400;
+}
+
+dd {
+    margin: auto;
+    margin-top: 16px;
+}
+
+dt {
+    font-size: 1.2em;
+    font-weight: 600;
+}
+
+label {
+    padding-right: 20px;
+}
+
+span {
+    display: block;
+    float: left;
+    width: 225px;
+}
+
+input {
+    width: 300px;
+    height: 35px;
+    border: 2px solid grey;
+    outline: none;
+    font-family: Segoe UI;
+    font-size: 18px;
+    display:block;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+input:focus {
+    border: 2px solid black;
+}
+
+textarea {
+    width: 300px;
+    height: 100px;
+    border: 2px solid grey;
+    outline: none;
+    font-family: Segoe UI;
+    font-size: 18px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+textarea:focus {
+    border: 2px solid black;
+}
+
+a {
+    color: #0071C4;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+button {
+    height: 35px;
+    background: rgb(204, 204, 204);
+    border: none;
+    outline: none;
+    font-family: Segoe UI, sans-serif;
+    font-size: 16px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+input[type=submit] {
+    height: 35px;
+    background: rgb(204, 204, 204);
+    border: none;
+    outline: none;
+    font-family: Segoe UI, sans-serif;
+    font-size: 16px;
+    padding-left: 20px;
+    margin-left: 0px;
+    padding-right: 20px;
+    width: 200px;
+}
+
+button:hover {
+    border: 2px solid rgb(153, 153, 153);
+    padding-left: 18px;
+    padding-right: 18px;
+}
+
+input[type=submit]:hover {
+    background: rgb(216, 216, 216);
+}
+
+button:active {
+    background: rgb(153, 153, 153);
+}
+
+input[type=submit]:active {
+    background: rgb(153, 153, 153);
+}
+
+header {
+        width: auto;
+        height: 80px;
+        background-color: #0071C4;
+        padding: 8px 0px 0px 0px;
+    }
+    
+    header div, article, footer {
+        margin: auto;
+        width: 984px;
+    }
+
+    header div h1 {
+        font-family: Segoe UI Semibold, sans-serif;
+        font-size: 24px;
+        color: white;
+        margin-top: 20px;
+    }
+
+    header h1 {
+        float: left;
+    }    
+
+    video {
+        width: 50%;
+    }
+
+    nav {
+        float: right;
+        margin-top: 10px;
+    }
+
+    #features {
+        margin-top: -15px;
+        margin-bottom: 115px;
+    }
+
+    #first {
+        float: left;
+        padding-right: 40px;
+        width: 30%;
+    }
+
+    #second {
+        float: left;
+        width: 30%;
+    }
+
+    #third {
+        float: left;
+        padding-left: 40px;
+        width: 30%;
+    }
+
+    #end {
+        clear: left;
+        min-height: 1px;
+        margin-bottom: -115px;
+    }
+
+    #menu li a {
+        color: white;
+        text-decoration: none;
+        padding: 80px 14px 30px 14px;
+    }
+
+    #logos {
+        float: right;
+        margin-top: -120px;
+        margin-right: 20px;
+    }

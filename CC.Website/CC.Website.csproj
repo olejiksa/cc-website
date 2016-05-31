@@ -73,13 +73,59 @@
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
+    <Content Include="WinJS\package.json" />
+    <Content Include="WinJS\README.md" />
+    <Content Include="WinJS\fonts\Symbols.ttf" />
+    <Content Include="WinJS\js\base.min.js.map" />
+    <Content Include="WinJS\js\ui.min.js.map" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="assets\1.png" />
+    <Content Include="assets\2.jpg" />
+    <Content Include="assets\3.jpg" />
+    <Content Include="assets\4.jpg" />
+    <Content Include="assets\5.jpg" />
+    <Content Include="assets\eight.png" />
+    <Content Include="assets\logo.svg" />
+    <Content Include="assets\poster.png" />
+    <Content Include="assets\seven.png" />
+    <Content Include="assets\video.mp4" />
+    <Content Include="assets\vista.png" />
+    <Content Include="assets\xp.png" />
+    <Content Include="BingSiteAuth.xml" />
+    <Content Include="css\desktop.css" />
+    <Content Include="css\ie8styles.css" />
+    <Content Include="css\styles.css" />
+    <Content Include="download.html" />
+    <Content Include="favicon.ico" />
+    <Content Include="help.html" />
+    <Content Include="index.html" />
+    <Content Include="js\actions.js" />
+    <Content Include="js\browser.js" />
+    <Content Include="js\downloadScript.js" />
+    <Content Include="js\html5shiv.js" />
+    <Content Include="medium.jpg" />
+    <Content Include="screenshots.html" />
+    <Content Include="small.jpg" />
     <Content Include="Web.config" />
+    <Content Include="WinJS\css\ui-dark.css" />
+    <Content Include="WinJS\css\ui-dark.min.css" />
+    <Content Include="WinJS\css\ui-light.css" />
+    <Content Include="WinJS\css\ui-light.min.css" />
+    <Content Include="WinJS\js\base.js" />
+    <Content Include="WinJS\js\base.min.js" />
+    <Content Include="WinJS\js\en-US\ui.strings.js" />
+    <Content Include="WinJS\js\ui.js" />
+    <Content Include="WinJS\js\ui.min.js" />
+    <Content Include="WinJS\js\WinJS.intellisense-setup.js" />
+    <Content Include="Crossword Creator Setup.zip" />
+    <None Include="WinJS\js\WinJS.intellisense.js" />
+    <Content Include="WinJS\License.txt" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
