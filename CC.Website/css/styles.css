@@ -201,6 +201,12 @@ form span {
     display: inline;
 }
 
+.socialIcon {
+    height: 50px;
+    width: 50px;
+    margin-bottom: 15px;
+}
+
 footer {
     clear: both;
 }

@@ -66,6 +66,8 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="assets\svg\facebook.svg" />
+    <Content Include="assets\svg\vk.svg" />
     <Content Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -86,7 +88,7 @@
     <Content Include="assets\4.jpg" />
     <Content Include="assets\5.jpg" />
     <Content Include="assets\eight.png" />
-    <Content Include="assets\logo.svg" />
+    <Content Include="assets\svg\logo.svg" />
     <Content Include="assets\poster.png" />
     <Content Include="assets\seven.png" />
     <Content Include="assets\video.mp4" />
