@@ -3,5 +3,5 @@
 }
 
 function download() {
-    document.location.href = "Crossword%20Creator%20Setup.zip";
+    document.location.href = "app/last_version/Crossword%20Creator%20Setup.zip";
 }

@@ -66,6 +66,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="app\update.txt" />
     <Content Include="assets\svg\facebook.svg" />
     <Content Include="assets\svg\vk.svg" />
     <Content Include="packages.config" />
@@ -82,11 +83,11 @@
     <Content Include="WinJS\js\ui.min.js.map" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="assets\1.png" />
-    <Content Include="assets\2.jpg" />
-    <Content Include="assets\3.jpg" />
-    <Content Include="assets\4.jpg" />
-    <Content Include="assets\5.jpg" />
+    <Content Include="app\screenshots\1.png" />
+    <Content Include="app\screenshots\2.jpg" />
+    <Content Include="app\screenshots\3.jpg" />
+    <Content Include="app\screenshots\4.jpg" />
+    <Content Include="app\screenshots\5.jpg" />
     <Content Include="assets\eight.png" />
     <Content Include="assets\svg\logo.svg" />
     <Content Include="assets\poster.png" />
@@ -120,14 +121,16 @@
     <Content Include="WinJS\js\ui.js" />
     <Content Include="WinJS\js\ui.min.js" />
     <Content Include="WinJS\js\WinJS.intellisense-setup.js" />
-    <Content Include="Crossword Creator Setup.zip" />
+    <Content Include="app\last_version\Crossword Creator Setup.zip" />
     <None Include="WinJS\js\WinJS.intellisense.js" />
     <Content Include="WinJS\License.txt" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="app\web\" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
