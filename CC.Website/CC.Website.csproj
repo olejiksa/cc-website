@@ -76,6 +76,7 @@
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
+    <Content Include="wide.png" />
     <Content Include="WinJS\package.json" />
     <Content Include="WinJS\README.md" />
     <Content Include="WinJS\fonts\Symbols.ttf" />
