@@ -67,9 +67,26 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="app\update.txt" />
+    <Content Include="app\web\launch.html" />
     <Content Include="assets\svg\facebook.svg" />
     <Content Include="assets\svg\vk.svg" />
+    <Content Include="fonts\LICENSE.txt" />
     <Content Include="packages.config" />
+    <Content Include="css\winstrap.min.css" />
+    <Content Include="js\vendor\jquery.min.js" />
+    <Content Include="fonts\glyphs\winjs-symbols.eot" />
+    <Content Include="fonts\glyphs\winjs-symbols.ttf" />
+    <Content Include="fonts\glyphs\winjs-symbols.woff" />
+    <Content Include="fonts\selawk.eot" />
+    <Content Include="fonts\selawk.ttf" />
+    <Content Include="fonts\selawkb.eot" />
+    <Content Include="fonts\selawkb.ttf" />
+    <Content Include="fonts\selawkl.eot" />
+    <Content Include="fonts\selawkl.ttf" />
+    <Content Include="fonts\selawksb.eot" />
+    <Content Include="fonts\selawksb.ttf" />
+    <Content Include="fonts\selawksl.eot" />
+    <Content Include="fonts\selawksl.ttf" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -129,9 +146,7 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="app\web\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
