@@ -68,6 +68,7 @@
   <ItemGroup>
     <Content Include="app\update.txt" />
     <Content Include="app\web\about.html" />
+    <Content Include="app\web\listEditor.html" />
     <Content Include="app\web\launch.html" />
     <Content Include="assets\svg\facebook.svg" />
     <Content Include="assets\svg\vk.svg" />
