@@ -68,6 +68,8 @@
   <ItemGroup>
     <Content Include="app\update.txt" />
     <Content Include="app\web\about.html" />
+    <Content Include="app\web\css\styles.css" />
+    <Content Include="app\web\js\actions.js" />
     <Content Include="app\web\listEditor.html" />
     <Content Include="app\web\launch.html" />
     <Content Include="assets\svg\facebook.svg" />
@@ -126,7 +128,7 @@
     <Content Include="help.html" />
     <Content Include="index.html" />
     <Content Include="js\actions.js" />
-    <Content Include="js\browser.js" />
+    <Content Include="js\userAgent.js" />
     <Content Include="js\downloadScript.js" />
     <Content Include="js\html5shiv.js" />
     <Content Include="medium.jpg" />
