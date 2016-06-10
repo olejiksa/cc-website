@@ -68,7 +68,6 @@
   <ItemGroup>
     <Content Include="app\update.txt" />
     <Content Include="app\web\about.html" />
-    <Content Include="app\web\css\styles.css" />
     <Content Include="app\web\js\actions.js" />
     <Content Include="app\web\listEditor.html" />
     <Content Include="app\web\launch.html" />
@@ -93,6 +92,7 @@
     <Content Include="fonts\selawksb.ttf" />
     <Content Include="fonts\selawksl.eot" />
     <Content Include="fonts\selawksl.ttf" />
+    <Content Include="app\web\css\styles.css" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

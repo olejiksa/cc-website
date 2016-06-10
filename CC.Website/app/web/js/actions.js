@@ -1,16 +1,30 @@
-﻿var itemArray = [
-    { title: "Самое глубокое озеро в мире", text: "байкал" },
-    { title: "Самая большая пустыня в мире", text: "сахара" },
-    { title: "Вторая от Солнца планета", text: "венера" }
-];
+﻿(function () {
+    "use strict";
 
-var items = [];
+    var itemsList = {};
 
-itemArray.forEach(function (item) {
-    items.push(item);
-});
+    function initializeTerms() {
+        var items = [];
+        itemsList = new WinJS.Binding.List(items);
 
-WinJS.Namespace.define("Sample.ListView", {
-    data: new WinJS.Binding.List(items)
-});
-WinJS.UI.processAll();
+        var list = document.getElementById("listView").winControl;
+        list.itemDataSource = itemsList.dataSource;
+        list.itemTemplate = document.querySelector(".smallListIconTextTemplate");
+        list.forceLayout();
+    }
+
+    function addTerm() {
+        var term = {
+            title: document.getElementById("question").value,
+            text: document.getElementById("answer").value
+        };
+        itemsList.push(term);
+    }
+
+    WinJS.UI.processAll().then(function () {
+        var element = document.body;
+        element.querySelector("#addTerm").addEventListener("click", addTerm, false);
+
+        initializeTerms();
+    });
+})();
