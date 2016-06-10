@@ -21,6 +21,8 @@
         itemsList.push(term);
         document.getElementById("question").value = "";
         document.getElementById("answer").value = "";
+        document.body.querySelector("#addTerm").disabled = true;
+
     }
 
     function check() {
