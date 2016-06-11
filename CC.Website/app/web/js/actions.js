@@ -18,24 +18,24 @@
             title: document.getElementById("question").value,
             text: document.getElementById("answer").value
         };
+
         itemsList.push(term);
         document.getElementById("question").value = "";
         document.getElementById("answer").value = "";
         document.body.querySelector("#addTerm").disabled = true;
+    }
 
+    function stringIsNullOrWhiteSpace(string)
+    {
+        if (typeof string === 'undefined' || string == null) return true;
+        return string.replace(/\s/g, '').length < 1;
     }
 
     function check() {
         var q = document.getElementById("question");
         var a = document.getElementById("answer");
 
-        if (typeof q === 'undefined' || q == null) return true;
-        var isQempty = q.value.replace(/\s/g, '').length < 1;
-
-        if (typeof a === 'undefined' || a == null) return true;
-        var isAempty = a.value.replace(/\s/g, '').length < 1;
-
-        document.getElementById("addTerm").disabled = (isQempty || isAempty) ? true : false;
+        document.getElementById("addTerm").disabled = (stringIsNullOrWhiteSpace(q.value) || stringIsNullOrWhiteSpace(a.value)) ? true : false;
     }
 
     WinJS.UI.processAll().then(function () {
