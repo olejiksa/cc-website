@@ -1,4 +1,8 @@
-﻿#listView {
+﻿html {
+    overflow: auto;
+}
+
+#listView {
     margin-left: -7px;
 }
 
