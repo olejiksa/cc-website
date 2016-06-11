@@ -69,6 +69,8 @@
     <Content Include="app\update.txt" />
     <Content Include="app\web\about.html" />
     <Content Include="app\web\js\actions.js" />
+    <Content Include="app\web\js\fileSaver.js" />
+    <Content Include="app\web\js\launch.js" />
     <Content Include="app\web\listEditor.html" />
     <Content Include="app\web\launch.html" />
     <Content Include="assets\svg\facebook.svg" />

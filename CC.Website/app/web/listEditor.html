@@ -72,17 +72,17 @@
         </div>
     </div>
 
-    <div class="container">
+    <div class="container" id="page-footer">
         <div class="form-group">
             <label>Вопрос</label><input id="question" type="text" class="form-control">
             <label>Ответ</label><input id="answer" type="text" class="form-control">
-            <button class="btn btn-primary" id="addTerm">+</button>
+            <button class="btn btn-primary" id="addTerm" disabled>+</button>
         </div>
         <div class="btn-group">
-            <button class="btn btn-default">Создать</button>
-            <button class="btn btn-default">Открыть</button>
-            <button class="btn btn-default">Сохранить</button>
-            <button class="btn btn-default">Сохранить как</button>
+            <button class="btn btn-default" disabled>Создать</button>
+            <button class="btn btn-default" disabled>Открыть</button>
+            <button class="btn btn-default" id="save" disabled>Сохранить</button>
+            <button class="btn btn-default" disabled>Сохранить как</button>
         </div>
     </div>
 
