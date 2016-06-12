@@ -12,7 +12,12 @@
         list.itemTemplate = document.querySelector(".smallListIconTextTemplate");
         list.forceLayout();
 
+        // TODO: сделать проверку на пустоту при инициализации страницы после F5 из кэша браузера.
         document.body.querySelector("#new").disabled = document.body.querySelector("#save").disabled = true;
+
+        var NewScript = document.createElement('script')
+        NewScript.src = "js/fileSaver.js"
+        document.body.appendChild(NewScript);
     }
 
     function addTerm() {
@@ -43,10 +48,6 @@
     }
 
     function save() {
-        var NewScript = document.createElement('script')
-        NewScript.src = "js/fileSaver.js"
-        document.body.appendChild(NewScript);
-
         saveTextAs("Hello, world!", "list.cwtf");
     }
 
