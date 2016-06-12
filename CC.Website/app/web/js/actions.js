@@ -2,6 +2,17 @@
     "use strict";
 
     var itemsList = {};
+    var q = document.getElementById("question");
+    var a = document.getElementById("answer");
+
+    function stringIsNullOrWhiteSpace(string) {
+        if (typeof string === 'undefined' || string == null) return true;
+        return string.replace(/\s/g, '').length < 1;
+    }
+
+    function check() {
+        document.getElementById("addTerm").disabled = (stringIsNullOrWhiteSpace(q.value) || stringIsNullOrWhiteSpace(a.value)) ? true : false;
+    }
 
     function initializeTerms() {
         var items = [];
@@ -12,11 +23,10 @@
         list.itemTemplate = document.querySelector(".smallListIconTextTemplate");
         list.forceLayout();
 
-        // TODO: сделать проверку на пустоту при инициализации страницы после F5 из кэша браузера.
         document.body.querySelector("#new").disabled = document.body.querySelector("#save").disabled = true;
 
-        var NewScript = document.createElement('script')
-        NewScript.src = "js/fileSaver.js"
+        var NewScript = document.createElement('script');
+        NewScript.src = "js/fileSaver.js";
         document.body.appendChild(NewScript);
     }
 
@@ -32,19 +42,6 @@
 
         document.body.querySelector("#addTerm").disabled = true;
         document.body.querySelector("#new").disabled = document.body.querySelector("#save").disabled = false;
-    }
-
-    function stringIsNullOrWhiteSpace(string)
-    {
-        if (typeof string === 'undefined' || string == null) return true;
-        return string.replace(/\s/g, '').length < 1;
-    }
-
-    function check() {
-        var q = document.getElementById("question");
-        var a = document.getElementById("answer");
-
-        document.getElementById("addTerm").disabled = (stringIsNullOrWhiteSpace(q.value) || stringIsNullOrWhiteSpace(a.value)) ? true : false;
     }
 
     function save() {

@@ -58,35 +58,33 @@
     </div>
     </div>
 
-    <!--The declarative markup necesary for ListView instantiation-->
-    <div id="listViewContainer" class="container">
-        <div id="listView"
-             class="win-selectionstylefilled"
-             data-win-control="WinJS.UI.ListView"
-             data-win-options="{
+    <div id="common-div" class="container">
+
+    <div id="controls" class="form-group">
+        <label>Вопрос</label><input id="question" type="text" class="form-control">
+        <label>Ответ</label><input id="answer" type="text" class="form-control">
+        <button class="btn btn-primary" id="addTerm" disabled>Добавить</button>
+        <p><button class="btn btn-default" disabled id="new">Создать</button></p>
+        <p><button class="btn btn-default" disabled>Открыть</button></p>
+        <p><button class="btn btn-default" disabled id="save">Сохранить</button></p>
+        <p><button class="btn btn-default" disabled>Сохранить как</button></p>
+    </div>
+        
+        <!--The declarative markup necesary for ListView instantiation-->
+    <div id="listView"
+         class="win-selectionstylefilled"
+         data-win-control="WinJS.UI.ListView"
+         data-win-options="{
             selectionMode: 'single',
             itemsReorderable: true,
             tapBehavior: WinJS.UI.TapBehavior.directSelect,
             layout: { type: WinJS.UI.ListLayout }
     }">
-        </div>
     </div>
 
-    <div class="container">
-        <div id="page-footer">
-        <div class="form-group">
-            <label>Вопрос</label><input id="question" type="text" class="form-control">
-            <label>Ответ</label><input id="answer" type="text" class="form-control">
-            <button class="btn btn-primary" id="addTerm" disabled>Добавить</button>
-        </div>
-        <div id="buttons-div" class="btn-group">
-            <button class="btn btn-default" id="new">Создать</button>
-            <button class="btn btn-default" disabled>Открыть</button>
-            <button class="btn btn-default" id="save">Сохранить</button>
-            <button class="btn btn-default" disabled>Сохранить как</button>
-        </div>
-        </div>
     </div>
+
+    <script src="js/actions.js"></script>
 
     <a class="back-to-top" href="#top">
         <i class="glyph glyph-up"></i>
@@ -95,6 +93,5 @@
 
     <script src="../../js/vendor/bootstrap.min.js"></script>
     <script src="../../js/app.js"></script>
-    <script src="js/actions.js"></script>
 </body>
 </html>
