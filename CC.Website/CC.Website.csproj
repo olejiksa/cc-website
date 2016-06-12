@@ -68,6 +68,7 @@
   <ItemGroup>
     <Content Include="app\update.txt" />
     <Content Include="app\web\about.html" />
+    <Content Include="app\web\css\commonStyles.css" />
     <Content Include="app\web\js\about.js" />
     <Content Include="app\web\js\actions.js" />
     <Content Include="app\web\js\fileSaver.js" />
