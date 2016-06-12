@@ -11,6 +11,8 @@
         list.itemDataSource = itemsList.dataSource;
         list.itemTemplate = document.querySelector(".smallListIconTextTemplate");
         list.forceLayout();
+
+        document.body.querySelector("#new").disabled = document.body.querySelector("#save").disabled = true;
     }
 
     function addTerm() {
@@ -24,7 +26,7 @@
         document.getElementById("answer").value = "";
 
         document.body.querySelector("#addTerm").disabled = true;
-        document.body.querySelector("#save").disabled = false;
+        document.body.querySelector("#new").disabled = document.body.querySelector("#save").disabled = false;
     }
 
     function stringIsNullOrWhiteSpace(string)
@@ -54,6 +56,7 @@
         element.querySelector("#question").addEventListener("input", check, false);
         element.querySelector("#answer").addEventListener("input", check, false);
 
+        element.querySelector("#new").addEventListener("click", initializeTerms, false);
         element.querySelector("#save").addEventListener("click", save, false);
 
         initializeTerms();

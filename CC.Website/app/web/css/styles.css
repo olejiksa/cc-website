@@ -1,8 +1,4 @@
-﻿html {
-    overflow: auto;
-}
-
-#listView {
+﻿#listView {
     margin-left: -7px;
 }
 
@@ -12,4 +8,13 @@
 
 .page-header .container {
     margin-bottom: 38px;
+}
+
+#buttons-div {
+    margin-top: -22px;
+}
+
+#page-footer {
+    position: fixed;
+    bottom: 12px;
 }
