@@ -1,8 +1,6 @@
-﻿using CC.Website.code;
-using System;
+﻿using System;
 using System.Net;
 using System.Net.Mail;
-using System.Web.ModelBinding;
 using System.Web.UI;
 
 namespace CC.Website
