@@ -130,7 +130,6 @@
     <Content Include="css\styles.css" />
     <Content Include="download.html" />
     <Content Include="favicon.ico" />
-    <Content Include="help.html" />
     <Content Include="index.html" />
     <Content Include="js\actions.js" />
     <Content Include="js\userAgent.js" />
