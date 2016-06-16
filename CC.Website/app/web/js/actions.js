@@ -77,11 +77,10 @@
 
         element.querySelector("#new").addEventListener("click", initializeTerms, false);
         element.querySelector("#save").addEventListener("click", save, false);
-
+        
+        element.querySelector("#input-b").addEventListener("change", change, false);
         element.querySelector("#input-a").addEventListener("click", open, false);
         element.querySelector("#input-b").addEventListener("click", open, false);
-        element.querySelector("#input-a").addEventListener("change", change, false);
-        element.querySelector("#input-b").addEventListener("click", change, false);
 
         initializeTerms();
     });
