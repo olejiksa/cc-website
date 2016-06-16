@@ -4,7 +4,7 @@
 	<meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE-Edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Редактор списков | Crossword Creator</title>
+    <title>Редактор сетки | Crossword Creator</title>
     <link href="../../css/winstrap.min.css?0.5.10" rel="stylesheet">
     <script src="../../js/vendor/jquery.min.js"></script>
     <link href="../../WinJS/css/ui-light.css" rel="stylesheet">
@@ -30,8 +30,8 @@
                 <!--Navbar items-->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
                     <ul class="nav navbar-nav">
-                        <li class="active"><a href="listEditor.html">Редактор списков</a></li>
-                        <li><a href="gridEditor.html">Редактор сетки</a></li>
+                        <li><a href="listEditor.html">Редактор списков</a></li>
+                        <li class="active"><a href="#">Редактор сетки</a></li>
                         <li><a href="#">Заполнение</a></li>
                         <li><a href="about.html">О программе</a></li>
                     </ul>
@@ -42,49 +42,14 @@
 
     <div class="page-header">
         <div class="container">
-            <h3>Редактор списков</h3>
+            <h3>Редактор сетки</h3>
         </div>
     </div>
 
-    <div class="container">
-    <!--ListView ItemTemplate-->
-    <div class="smallListIconTextTemplate" data-win-control="WinJS.Binding.Template">
-        <div class="smallListTextItem">
-            <div class="smallListIconTextItem-Detail">
-                <h4 class="listViewItemTemplate" data-win-bind="textContent: title"></h4>
-                <h6 class="listViewItemTemplate" data-win-bind="textContent: text"></h6>
-            </div>
-        </div>
+    <div id="secret-div" class="container">
+        <p id="secret" class="type-h1">Shhh...<br>Let's no leak<br>our hard work</p>
+        <div id="gradient"></div>
     </div>
-    </div>
-
-    <div id="common-div" class="container">
-
-    <div id="controls" class="form-group">
-        <label>Вопрос</label><input id="question" type="text" class="form-control">
-        <label>Ответ</label><input id="answer" type="text" class="form-control">
-        <button class="btn btn-primary" id="addTerm" disabled>Добавить</button>
-        <p><button class="btn btn-default" disabled id="new">Создать</button></p>
-        <p><button class="btn btn-default" disabled>Открыть</button></p>
-        <p><button class="btn btn-default" disabled id="save">Сохранить</button></p>
-        <p><button class="btn btn-default" disabled>Сохранить как</button></p>
-    </div>
-        
-        <!--The declarative markup necesary for ListView instantiation-->
-    <div id="listView"
-         class="win-selectionstylefilled"
-         data-win-control="WinJS.UI.ListView"
-         data-win-options="{
-            selectionMode: 'single',
-            itemsReorderable: true,
-            tapBehavior: WinJS.UI.TapBehavior.directSelect,
-            layout: { type: WinJS.UI.ListLayout }
-    }">
-    </div>
-
-    </div>
-
-    <script src="js/actions.js"></script>
 
     <a class="back-to-top" href="#top">
         <i class="glyph glyph-up"></i>

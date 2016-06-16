@@ -74,6 +74,7 @@
     <Content Include="app\web\js\fileSaver.js" />
     <Content Include="app\web\js\launch.js" />
     <Content Include="app\web\launch.html" />
+    <Content Include="app\web\gridEditor.html" />
     <Content Include="app\web\listEditor.html" />
     <Content Include="assets\svg\facebook.svg" />
     <Content Include="assets\svg\vk.svg" />
