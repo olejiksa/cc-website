@@ -46,3 +46,11 @@
     -webkit-background-clip: text;
     color: transparent;
 }
+
+input[type=file] {
+    opacity: 0; width:234px; height:0px;
+}
+
+#input-a {
+    margin-top: 36px;
+}

@@ -48,6 +48,27 @@
         saveTextAs("Hello, world!", "list.cwtf");
     }
 
+    function open() {
+        document.body.querySelector("#input-b").click();
+    }
+
+    function displayContents(contents) {
+        alert(contents);
+    }
+
+    function change(e) {
+        var file = e.target.files[0];
+        if (!file) {
+            return;
+        }
+        var reader = new FileReader();
+        reader.onload = function(e) {
+            var contents = e.target.result;
+            displayContents(contents);
+        };
+        reader.readAsText(file);
+    }
+
     WinJS.UI.processAll().then(function () {
         var element = document.body;
         element.querySelector("#addTerm").addEventListener("click", addTerm, false);
@@ -56,6 +77,11 @@
 
         element.querySelector("#new").addEventListener("click", initializeTerms, false);
         element.querySelector("#save").addEventListener("click", save, false);
+
+        element.querySelector("#input-a").addEventListener("click", open, false);
+        element.querySelector("#input-b").addEventListener("click", open, false);
+        element.querySelector("#input-a").addEventListener("change", change, false);
+        element.querySelector("#input-b").addEventListener("click", change, false);
 
         initializeTerms();
     });
