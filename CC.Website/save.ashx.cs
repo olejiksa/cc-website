@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.IO;
+using System.Text;
 using System.Web;
 using System.Web.Script.Serialization;
 
@@ -15,15 +16,6 @@ namespace ServerSide
 
     public class Handler : IHttpHandler
     {
-        private DataInOut GetData(int Id)
-        {
-            var datainout = new DataInOut();
-            datainout.Id = Id;
-
-            datainout.Data1 = "Dat_aa";
-            datainout.Data2 = "Dat_bb";
-            return datainout;
-        }
         public void ProcessRequest(HttpContext context)
         {
             System.IO.StreamReader reader = new System.IO.StreamReader(context.Request.InputStream);
@@ -38,11 +30,13 @@ namespace ServerSide
                 if (!ht.ContainsKey(buf[0])) ht.Add(buf[0], buf[1]);
             }
 
-            DataInOut dio = GetData(Convert.ToInt32((ht["Id"]).ToString()));       
-            JavaScriptSerializer javaScriptSerializer = new JavaScriptSerializer();
-            string serdio = javaScriptSerializer.Serialize(dio);
-            context.Response.ContentType = "text/html";
-            context.Response.Write(serdio);
+            if (!File.Exists(HttpContext.Current.Server.MapPath("list.log")))
+                File.Create(HttpContext.Current.Server.MapPath("list.log"));
+
+            using (StreamWriter sw = new StreamWriter(HttpContext.Current.Server.MapPath("list.log"), true))
+            {
+                sw.WriteLine("logString");
+            }
         }
 
         public bool IsReusable { get { return true; } }

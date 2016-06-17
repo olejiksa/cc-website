@@ -81,15 +81,15 @@
             type: "POST",
             cache: false,   //параметр запрета кэширования нужно установить
             async: true,
-            url: "save.ashx", //Handler(папка)/MyHandler.ashx(файл)
+            url: "/save.ashx", //Handler(папка)/MyHandler.ashx(файл)
             contentType: "application/json; charset=utf-8",
-            dataType: "json",
+            dataType: "text",
             data: { 'Id': '10009', 'tst': 'ttss', 'empty': '', 'tst': 'ttss', 'tst2': 'ttss' }, //Данные, передаваемые на серверную сторону
-            responseType: "json",
-            success: function (data, textStatus, XHR) //
+            responseType: "file",
+            success: function (data) //
             {
                 //Отображаем принятые данные
-                alert('status: ' + textStatus + '   / Data1: ' + data.Data1 + ' Data2: ' + data.Data2 + '   / xhr: ' + XHR);
+                window.location = 'list.log';
             },
             error: function () //
             {
