@@ -22,7 +22,12 @@ namespace ServerSide
             string requestFromPost = reader.ReadToEnd();
 
             if (!File.Exists(HttpContext.Current.Server.MapPath("list.cwtf")))
-                File.Create(HttpContext.Current.Server.MapPath("list.cwtf"));
+                File.CreateText(HttpContext.Current.Server.MapPath("list.cwtf"));
+            else
+            {
+                File.Delete(HttpContext.Current.Server.MapPath("list.cwtf"));
+                File.CreateText(HttpContext.Current.Server.MapPath("list.cwtf"));
+            }
 
             using (StreamWriter sw = new StreamWriter(HttpContext.Current.Server.MapPath("list.cwtf"), true))
             {

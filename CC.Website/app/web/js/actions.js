@@ -77,9 +77,6 @@
 
     // Сохраняет файл.
     function save() {
-        var oSerializer = new XMLSerializer();
-        var sXML = oSerializer.serializeToString(doc);
-
         $.ajax({
             type: "POST",
             cache: false,   //параметр запрета кэширования нужно установить
@@ -87,7 +84,7 @@
             url: "/save.ashx", //Handler(папка)/MyHandler.ashx(файл)
             contentType: "text/xml; charset=utf-8",
             dataType: "xml",
-            data: sXML.toString(), //Данные, передаваемые на серверную сторону
+            data: itemsList.toString, //Данные, передаваемые на серверную сторону
             responseType: "text",
             success: function (data) //
             {
