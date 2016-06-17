@@ -89,7 +89,7 @@
             success: function (data) //
             {
                 //Отображаем принятые данные
-                window.location = 'list.cwtf';
+                window.location = '../../list.cwtf';
             },
             error: function () //
             {
