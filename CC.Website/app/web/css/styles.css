@@ -48,13 +48,45 @@
 }
 
 input[type=file] {
-    opacity: 0; width:234px; height:0px;
+    opacity: 0; width: 234px; height: 0px;
 }
 
 #input-a {
     margin-top: 36px;
 }
 
-#list-editor-header .type-h4 {
-    padding-top: 5px;
+@media (max-width: 640px) {
+
+#controls {
+    border-right: 0;
+    width: 100%;
+    padding-right: 0px;
+    padding-bottom: 0px;
+}
+
+input {
+    width: 100%;
+}
+
+#input-a {
+    width: 100%;
+}
+
+#common-div {
+    display: block;
+    margin-bottom: 0;  
+}
+
+#listView {
+    height: auto;
+    padding-top: 6px;
+    padding-left: 6px;
+    padding-right: -24px;
+    margin-bottom: 0;
+}
+
+body {
+    margin: 0;
+}
+
 }
