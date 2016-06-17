@@ -42,8 +42,9 @@
     </nav>
 
     <div class="page-header">
-        <div class="container">
-            <h3>Редактор списков</h3>
+        <div id="list-editor-header" class="container">
+            <p class="type-h3">Редактор списков</p>
+            <p class="type-h4"><span class="color-type-secondary" id="file-name">Безымянный список</span></p>
         </div>
     </div>
 
@@ -70,8 +71,8 @@
         <p><button class="btn btn-default" disabled id="save">Сохранить</button></p>
         <p><button class="btn btn-default" disabled>Сохранить как</button></p>
     </div>
-        
-        <!--The declarative markup necesary for ListView instantiation-->
+            
+    <!--ListView-->
     <div id="listView"
          class="win-selectionstylefilled"
          data-win-control="WinJS.UI.ListView"

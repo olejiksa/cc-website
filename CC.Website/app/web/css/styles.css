@@ -54,3 +54,7 @@ input[type=file] {
 #input-a {
     margin-top: 36px;
 }
+
+#list-editor-header .type-h4 {
+    padding-top: 5px;
+}
