@@ -99,6 +99,7 @@
     <Content Include="fonts\selawksl.eot" />
     <Content Include="fonts\selawksl.ttf" />
     <Content Include="app\web\css\styles.css" />
+    <Content Include="app\web\js\save.ashx" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -157,6 +158,9 @@
     <Content Include="WinJS\License.txt" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="app\web\js\save.ashx.cs">
+      <DependentUpon>save.ashx</DependentUpon>
+    </Compile>
     <Compile Include="mail.aspx.cs">
       <DependentUpon>mail.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
