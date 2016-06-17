@@ -81,7 +81,7 @@ input {
     height: auto;
     padding-top: 6px;
     padding-left: 6px;
-    padding-right: -24px;
+    margin-right: -24px;
     margin-bottom: 0;
 }
 
