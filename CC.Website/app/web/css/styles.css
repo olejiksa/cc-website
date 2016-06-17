@@ -55,7 +55,7 @@ input[type=file] {
     margin-top: 36px;
 }
 
-@media (max-width: 640px) {
+@media (max-width: 768px) {
 
 #controls {
     border-right: 0;
