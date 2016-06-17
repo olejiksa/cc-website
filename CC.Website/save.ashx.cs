@@ -26,13 +26,13 @@ namespace ServerSide
             else
             {
                 File.Delete(HttpContext.Current.Server.MapPath("list.cwtf"));
-                File.CreateText(HttpContext.Current.Server.MapPath("list.cwtf"));
+                File.WriteAllText(HttpContext.Current.Server.MapPath("list.cwtf"), requestFromPost);
             }
 
-            using (StreamWriter sw = new StreamWriter(HttpContext.Current.Server.MapPath("list.cwtf"), true))
-            {
-                sw.WriteLine(requestFromPost);
-            }
+            //using (StreamWriter sw = new StreamWriter(HttpContext.Current.Server.MapPath("list.cwtf"), true))
+            //{
+            //    sw.WriteLine(requestFromPost);
+            //}
         }
 
         public bool IsReusable { get { return true; } }

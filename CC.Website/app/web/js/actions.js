@@ -77,6 +77,13 @@
 
     // Сохраняет файл.
     function save() {
+        var xml = '<?xml version="1.0" encoding="utf-8"?>';
+        xml += "<head>";
+        for (var i = 0; i < itemsList.length; i++) {
+            xml += "<word><id>" + i + "</id><answer>" + itemsList[i].text + "</answer><question>" + itemsList[i].title + "</question></word>"
+        }
+        xml += "</head>";
+
         $.ajax({
             type: "POST",
             cache: false,   //параметр запрета кэширования нужно установить
@@ -84,7 +91,7 @@
             url: "/save.ashx", //Handler(папка)/MyHandler.ashx(файл)
             contentType: "text/xml; charset=utf-8",
             dataType: "xml",
-            data: itemsList.toString, //Данные, передаваемые на серверную сторону
+            data: xml, //Данные, передаваемые на серверную сторону
             responseType: "text",
             success: function (data) //
             {
