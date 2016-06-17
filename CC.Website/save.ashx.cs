@@ -21,21 +21,12 @@ namespace ServerSide
             System.IO.StreamReader reader = new System.IO.StreamReader(context.Request.InputStream);
             string requestFromPost = reader.ReadToEnd();
 
-            char[] c1 = new char[] { '&' }; char[] c2 = new char[] { '=' };
-            Hashtable ht = new Hashtable(); string[] buf = null;
-            string[] parms = requestFromPost.Split(c1, StringSplitOptions.RemoveEmptyEntries);
-            foreach (string s in parms)
-            {
-                buf = s.Split(c2); if (buf.Length < 2) { continue; }
-                if (!ht.ContainsKey(buf[0])) ht.Add(buf[0], buf[1]);
-            }
+            if (!File.Exists(HttpContext.Current.Server.MapPath("list.cwtf")))
+                File.Create(HttpContext.Current.Server.MapPath("list.cwtf"));
 
-            if (!File.Exists(HttpContext.Current.Server.MapPath("list.log")))
-                File.Create(HttpContext.Current.Server.MapPath("list.log"));
-
-            using (StreamWriter sw = new StreamWriter(HttpContext.Current.Server.MapPath("list.log"), true))
+            using (StreamWriter sw = new StreamWriter(HttpContext.Current.Server.MapPath("list.cwtf"), true))
             {
-                sw.WriteLine("logString");
+                sw.WriteLine(requestFromPost);
             }
         }
 
