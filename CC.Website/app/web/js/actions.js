@@ -87,7 +87,7 @@
             url: "/save.ashx", //Handler(папка)/MyHandler.ashx(файл)
             contentType: "text/xml; charset=utf-8",
             dataType: "xml",
-            data: sXML, //Данные, передаваемые на серверную сторону
+            data: sXML.toString(), //Данные, передаваемые на серверную сторону
             responseType: "text",
             success: function (data) //
             {
