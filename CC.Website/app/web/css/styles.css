@@ -66,6 +66,7 @@ input[type=file] {
 
 input {
     width: 100%;
+    max-width: none !important;
 }
 
 #input-a {
@@ -83,10 +84,6 @@ input {
     padding-left: 6px;
     margin-right: -24px;
     margin-bottom: 0;
-}
-
-body {
-    margin: 0;
 }
 
 }
