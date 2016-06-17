@@ -77,15 +77,18 @@
 
     // Сохраняет файл.
     function save() {
+        var oSerializer = new XMLSerializer();
+        var sXML = oSerializer.serializeToString(doc);
+
         $.ajax({
             type: "POST",
             cache: false,   //параметр запрета кэширования нужно установить
             async: true,
             url: "/save.ashx", //Handler(папка)/MyHandler.ashx(файл)
-            contentType: "application/json; charset=utf-8",
-            dataType: "text",
-            data: { 'Id': '10009', 'tst': 'ttss', 'empty': '', 'tst': 'ttss', 'tst2': 'ttss' }, //Данные, передаваемые на серверную сторону
-            responseType: "file",
+            contentType: "text/xml; charset=utf-8",
+            dataType: "xml",
+            data: sXML, //Данные, передаваемые на серверную сторону
+            responseType: "text",
             success: function (data) //
             {
                 //Отображаем принятые данные
