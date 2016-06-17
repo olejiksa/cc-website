@@ -31,7 +31,7 @@
     }
 
     // Добавляет термин в коллекцию из формы.
-    function addTerm() {
+    function addNewTerm() {
         var term = {
             title: document.getElementById("question").value,
             text: document.getElementById("answer").value.toLowerCase()
@@ -83,6 +83,7 @@
 
     // Преобразует XML-коллекцию в её JavaScript-эквивалент. 
     function parse(xml) {
+        itemsList.length = 0;
         var xmlDoc = $.parseXML(xml);
         var $xml = $(xmlDoc);
 
@@ -97,7 +98,7 @@
 
     WinJS.UI.processAll().then(function () {
         var element = document.body;
-        element.querySelector("#addTerm").addEventListener("click", addTerm, false);
+        element.querySelector("#addTerm").addEventListener("click", addNewTerm, false);
         element.querySelector("#question").addEventListener("input", check, false);
         element.querySelector("#answer").addEventListener("input", check, false);
 
