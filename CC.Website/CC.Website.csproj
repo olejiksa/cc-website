@@ -71,7 +71,6 @@
     <Content Include="app\web\css\commonStyles.css" />
     <Content Include="app\web\js\about.js" />
     <Content Include="app\web\js\actions.js" />
-    <Content Include="app\web\js\fileSaver.js" />
     <Content Include="app\web\js\launch.js" />
     <Content Include="app\web\js\listEditor.js" />
     <Content Include="app\web\launch.html" />

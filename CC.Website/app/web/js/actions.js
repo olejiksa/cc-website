@@ -1,6 +1,9 @@
 ﻿(function () {
     "use strict";
 
+    var item, itemIndex;
+    itemIndex = -1;
+
     var itemsList = {};
     var element = document.body;
 
@@ -15,6 +18,15 @@
     // Проверяет поля текущего термина на пустоту.
     function check() {
         element.querySelector("#addTerm").disabled = (stringIsNullOrWhiteSpace(q.value) || stringIsNullOrWhiteSpace(a.value)) ? true : false;
+
+        if (itemIndex !== -1)
+        {
+            var arrayItem = {
+                title: q.value,
+                text: a.value.toLowerCase()
+            }
+            itemsList.splice(itemIndex, 1, arrayItem);
+        }
     }
 
     function initializeTerms() {
@@ -29,6 +41,8 @@
         list.forceLayout();
 
         element.querySelector("#new").disabled = element.querySelector("#save").disabled = true;
+
+        q.value = a.value = "";
     }
 
     // Добавляет термин в коллекцию из формы.
@@ -39,11 +53,12 @@
         };
 
         itemsList.push(term);
-        q.value = "";
-        a.value = "";
+        q.value = a.value = "";
 
         element.querySelector("#addTerm").disabled = true;
         element.querySelector("#new").disabled = document.body.querySelector("#save").disabled = false;
+
+        itemIndex = -1;
     }
 
     // Добавляет термин в коллекцию, используя готовые параметры.
@@ -57,6 +72,8 @@
 
         element.querySelector("#addTerm").disabled = true;
         element.querySelector("#new").disabled = document.body.querySelector("#save").disabled = false;
+
+        itemIndex = -1;
     }
 
     // Сохраняет файл, скоро будет DEPRECATED.
@@ -71,6 +88,8 @@
 
     // Читает файл, полученный из диалога открытия. 
     function change(e) {
+        q.value = a.value = "";
+
         var file = e.target.files[0];
         if (!file)
             return;
@@ -98,8 +117,21 @@
         });
     }
 
+    // Передает данные в поля формы для редактирования.
+    function itemClick(eventInfo) {
+        item = itemsList.getAt(eventInfo.detail.itemIndex);
+        itemIndex = eventInfo.detail.itemIndex;
+
+        q.value = item.title;
+        a.value = item.text;
+
+        if (!stringIsNullOrWhiteSpace(q.value) && !stringIsNullOrWhiteSpace(a.value))
+            element.querySelector("#addTerm").disabled = false;
+    }
+
     WinJS.UI.processAll().then(function () {
         element.querySelector("#addTerm").addEventListener("click", addNewTerm, false);
+        listView.addEventListener("iteminvoked", itemClick);
         q.addEventListener("input", check, false);
         a.addEventListener("input", check, false);
 
