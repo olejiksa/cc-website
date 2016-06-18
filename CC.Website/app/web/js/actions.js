@@ -104,10 +104,10 @@
             data: xml,
             responseType: "text",
             success: function (data) {
-                var elem = document.createElement('a');
+                /*var elem = document.createElement('a');
                 elem.setAttribute('href', '/list.cwtf');
                 elem.setAttribute('download', "list.cwtf");
-                elem.click();
+                elem.click();*/
                 download(xml, "list.cwtf", "text/plain");
             },
             error: function () {
