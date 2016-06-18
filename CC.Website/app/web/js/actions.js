@@ -86,11 +86,13 @@
     // Сохраняет файл.
     function save() {
         var list = document.getElementById("listView").winControl.itemDataSource.list;
+        var j = 1;
 
         var xml = '<?xml version="1.0" encoding="utf-8"?>';
         xml += "<head>";
-        for (var i = 1; i <= itemsList.length; i++) {
-            xml += "<word><id>" + i + "</id><answer>" + list.getAt(i).text + "</answer><question>" + list.getAt(i).title + "</question></word>"
+        for (var i = 0; i < itemsList.length; i++) {
+            xml += "<word><ID>" + j.toString() + "</ID><answer>" + list.getAt(i).text + "</answer><question>" + list.getAt(i).title + "</question></word>";
+            j++;
         }
         xml += "</head>";
 
