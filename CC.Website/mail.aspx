@@ -43,18 +43,21 @@
         <form id="rsvpform" runat="server">
             <p>
                 <span>Адрес электронной почты</span>
-                <asp:TextBox id="email" type="email" runat="server" required="1"></asp:TextBox>
+                <asp:TextBox id="email" type="email" runat="server" required="true"
+                    aria-required="true"></asp:TextBox>
             </p>
             <p>
                 <span>Тема</span>
-                <input id="subject" type="text" runat="server" required>
+                <input id="subject" type="text" runat="server" required
+                    aria-required="true">
             </p>
             <p>
             <p>
                 <span>Текст письма</span>
-                <textarea id="body" cols="50" rows="5" runat="server" required></textarea>
+                <textarea id="body" cols="50" rows="5" runat="server" required
+                    aria-required="true"></textarea>
             </p>
-            <asp:Button CssClass="button" runat="server" Text="Отправить" OnClick="btn_Click"></asp:Button>
+            <asp:Button aria-required="true" CssClass="button" runat="server" Text="Отправить" OnClick="btn_Click"></asp:Button>
         </form>
     </article>
     <article>
