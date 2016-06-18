@@ -89,9 +89,8 @@
 
         var xml = '<?xml version="1.0" encoding="utf-8"?>';
         xml += "<head>";
-        for (var i = 0; i < itemsList.length; i++) {
-            var j = i + 1;
-            xml += "<word><id>" + j + "</id><answer>" + list.getAt(i).text + "</answer><question>" + list.getAt(i).title + "</question></word>"
+        for (var i = 1; i <= itemsList.length; i++) {
+            xml += "<word><id>" + i + "</id><answer>" + list.getAt(i).text + "</answer><question>" + list.getAt(i).title + "</question></word>"
         }
         xml += "</head>";
 
