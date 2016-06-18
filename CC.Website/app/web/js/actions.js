@@ -176,6 +176,9 @@
 
         q.value = a.value = "";
         element.querySelector("#addTerm").disabled = true;
+
+        if (itemsList.length === 0)
+            element.querySelector("#new").disabled = element.querySelector("#save").disabled = true;
     }
 
     // Запускает процесс страницы веб-приложения.
