@@ -105,8 +105,8 @@
             responseType: "text",
             success: function (data) {
                 var elem = document.createElement('a');
-                elem.setAttribute('href', 'data:text/xml;charset=utf-8,' + encodeURIComponent(xml) + ".cwtf");
-                elem.setAttribute('download', filename);
+                elem.setAttribute('href', '/list.cwtf');
+                elem.setAttribute('download', "list.cwtf");
                 elem.click();
                 download(xml, "list.cwtf", "text/plain");
             },
