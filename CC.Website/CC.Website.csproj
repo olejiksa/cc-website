@@ -69,10 +69,15 @@
     <Content Include="app\update.txt" />
     <Content Include="app\web\about.html" />
     <Content Include="app\web\css\commonStyles.css" />
+    <Content Include="app\web\filling.html" />
+    <Content Include="app\web\images\medium.png" />
+    <Content Include="app\web\images\small.png" />
+    <Content Include="wide.png" />
     <Content Include="app\web\js\about.js" />
     <Content Include="app\web\js\actions.js" />
     <Content Include="app\web\js\launch.js" />
     <Content Include="app\web\js\listEditor.js" />
+    <Content Include="app\web\js\secret.js" />
     <Content Include="app\web\launch.html" />
     <Content Include="app\web\gridEditor.html" />
     <Content Include="app\web\listEditor.html" />
@@ -106,7 +111,7 @@
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
-    <Content Include="wide.png" />
+    <Content Include="app\web\images\wide.png" />
     <Content Include="WinJS\package.json" />
     <Content Include="WinJS\README.md" />
     <Content Include="WinJS\fonts\Symbols.ttf" />
