@@ -24,12 +24,11 @@
 }
 
 #controls {
-    width: 296px;
+    width: 444px;
     padding-top: 24px;
     padding-left: 12px;
     padding-right: 24px;
     padding-bottom: 24px;
-    border-right: 1px solid #A9A9A9;
 }
 
 #controls button {
@@ -48,20 +47,11 @@
 }
 
 input[type=file] {
-    opacity: 0; width: 234px; height: 0px;
+    opacity: 0; height: 0px;
 }
 
 #input-a {
     margin-top: 36px;
-}
-
-@media (max-width: 768px) {
-
-#controls {
-    border-right: 0;
-    width: 100%;
-    padding-right: 0px;
-    padding-bottom: 0px;
 }
 
 input {
@@ -71,6 +61,14 @@ input {
 
 #input-a {
     width: 100%;
+}
+
+@media (max-width: 768px) {
+
+#controls {
+    width: 100%;
+    padding-right: 0px;
+    padding-bottom: 0px;
 }
 
 #common-div {
