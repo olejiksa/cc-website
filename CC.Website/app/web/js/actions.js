@@ -96,7 +96,10 @@
         }
         xml += "</head>";
 
-        $.ajax({
+        element.querySelector("#file-name").innerHTML = escape("list.cwtf");
+        download(xml, "list.cwtf", "text/plain");
+
+        /*$.ajax({
             type: "POST",
             cache: false,
             async: true,
@@ -111,12 +114,11 @@
                 //elem.setAttribute('href', '/list.cwtf');
                 //elem.setAttribute('download', "list.cwtf");
                 //elem.click();
-                download(xml, "list.cwtf", "text/plain");
             },
             error: function () {
                 alert("Bug!");
             }
-        });
+        });*/
     }
 
     // Открывает файл.
@@ -167,6 +169,15 @@
             element.querySelector("#addTerm").disabled = false;
     }
 
+    // Удаляет выбранный элемент.
+    function remove() {
+        itemsList.splice(itemIndex, 1);
+        itemIndex = -1;
+
+        q.value = a.value = "";
+        element.querySelector("#addTerm").disabled = true;
+    }
+
     // Запускает процесс страницы веб-приложения.
     WinJS.UI.processAll().then(function () {
         element.querySelector("#addTerm").addEventListener("click", addNewTerm, false);
@@ -180,6 +191,20 @@
         element.querySelector("#input-b").addEventListener("change", change, false);
         element.querySelector("#input-a").addEventListener("click", open, false);
         element.querySelector("#input-b").addEventListener("click", open, false);
+
+        element.querySelector("#delete").addEventListener("click", remove, false);
+
+        listView.oncontextmenu = function (event) {
+            event = event || window.event;
+            event.preventDefault ? event.preventDefault() : event.returnValue = false;
+
+            if (itemIndex !== -1) {
+                var anchor = listView;
+                var menu = document.getElementById("menu1").winControl;
+                menu.alignment = "center";
+                menu.show(anchor, "autovertical");
+            }
+        };
 
         initializeTerms();
     });
