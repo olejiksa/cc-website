@@ -106,10 +106,11 @@
             data: xml,
             responseType: "text",
             success: function (data) {
-                var elem = document.createElement('a');
-                elem.setAttribute('href', '/list.cwtf');
-                elem.setAttribute('download', "list.cwtf");
-                elem.click();
+                element.querySelector("#file-name").innerHTML = escape("list.cwtf");
+                //var elem = document.createElement('a');
+                //elem.setAttribute('href', '/list.cwtf');
+                //elem.setAttribute('download', "list.cwtf");
+                //elem.click();
                 download(xml, "list.cwtf", "text/plain");
             },
             error: function () {
