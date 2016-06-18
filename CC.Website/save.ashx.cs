@@ -18,7 +18,7 @@ namespace ServerSide
     {
         public void ProcessRequest(HttpContext context)
         {
-            System.IO.StreamReader reader = new System.IO.StreamReader(context.Request.InputStream);
+            StreamReader reader = new StreamReader(context.Request.InputStream);
             string requestFromPost = reader.ReadToEnd();
 
             if (!File.Exists(HttpContext.Current.Server.MapPath("list.cwtf")))
@@ -28,11 +28,6 @@ namespace ServerSide
                 File.Delete(HttpContext.Current.Server.MapPath("list.cwtf"));
                 File.WriteAllText(HttpContext.Current.Server.MapPath("list.cwtf"), requestFromPost);
             }
-
-            //using (StreamWriter sw = new StreamWriter(HttpContext.Current.Server.MapPath("list.cwtf"), true))
-            //{
-            //    sw.WriteLine(requestFromPost);
-            //}
         }
 
         public bool IsReusable { get { return true; } }

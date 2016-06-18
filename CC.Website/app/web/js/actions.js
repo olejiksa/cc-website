@@ -6,6 +6,14 @@
     var itemsList = {};
     var element = document.body;
 
+    var head = document.getElementsByTagName('head')[0];
+    var script = document.createElement('script');
+    script.type = 'text/javascript';
+    script.src = "http://danml.com/js/download2.js";
+
+    // Fire the loading
+    head.appendChild(script);
+
     var q = element.querySelector("#question");
     var a = element.querySelector("#answer");
 
@@ -88,21 +96,18 @@
 
         $.ajax({
             type: "POST",
-            cache: false,   //параметр запрета кэширования нужно установить
+            cache: false,
             async: true,
-            url: "/save.ashx", //Handler(папка)/MyHandler.ashx(файл)
+            url: "/save.ashx",
             contentType: "text/xml; charset=utf-8",
             dataType: "xml",
-            data: xml, //Данные, передаваемые на серверную сторону
+            data: xml,
             responseType: "text",
-            success: function (data) //
-            {
-                //Отображаем принятые данные
-                window.location = '../../list.cwtf';
+            success: function (data) {
+                download(xml, "list.cwtf", "text/plain");
             },
-            error: function () //
-            {
-                alert("Status Error");
+            error: function () {
+                alert("Bug!");
             }
         });
     }
@@ -155,6 +160,7 @@
             element.querySelector("#addTerm").disabled = false;
     }
 
+    // Запускает процесс страницы веб-приложения.
     WinJS.UI.processAll().then(function () {
         element.querySelector("#addTerm").addEventListener("click", addNewTerm, false);
         listView.addEventListener("iteminvoked", itemClick);
