@@ -90,7 +90,7 @@
         var xml = '<?xml version="1.0" encoding="utf-8"?>';
         xml += "<head>";
         for (var i = 0; i < itemsList.length; i++) {
-            xml += "<word><id>" + i + "</id><answer>" + list.getAt(i).text + "</answer><question>" + list.getAt(i).title + "</question></word>"
+            xml += "<word><id>" + (i + 1) + "</id><answer>" + list.getAt(i).text + "</answer><question>" + list.getAt(i).title + "</question></word>"
         }
         xml += "</head>";
 
@@ -104,7 +104,10 @@
             data: xml,
             responseType: "text",
             success: function (data) {
-                window.location = "/list.cwtf";
+                var elem = document.createElement('a');
+                elem.setAttribute('href', 'data:text/xml;charset=utf-8,' + encodeURIComponent(xml) + ".cwtf");
+                elem.setAttribute('download', filename);
+                elem.click();
                 download(xml, "list.cwtf", "text/plain");
             },
             error: function () {
