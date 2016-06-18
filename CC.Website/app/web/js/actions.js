@@ -47,7 +47,7 @@
         list.itemTemplate = document.querySelector(".smallListIconTextTemplate");
         list.forceLayout();
 
-        element.querySelector("#new").disabled = element.querySelector("#save").disabled = true;
+        element.querySelector("#addTerm").disabled = element.querySelector("#new").disabled = element.querySelector("#save").disabled = true;
 
         q.value = a.value = "";
     }

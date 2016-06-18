@@ -63,6 +63,10 @@ input {
     width: 100%;
 }
 
+#question {
+    white-space: normal;
+}
+
 @media (max-width: 768px) {
 
 #controls {
