@@ -105,6 +105,7 @@
             responseType: "text",
             success: function (data) {
                 download(xml, "list.cwtf", "text/plain");
+                window.location = "/list.cwtf";
             },
             error: function () {
                 alert("Bug!");
