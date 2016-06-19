@@ -69,6 +69,7 @@
     <Content Include="app\update.txt" />
     <Content Include="app\web\about.html" />
     <Content Include="app\web\css\commonStyles.css" />
+    <Content Include="app\web\css\gridStyles.css" />
     <Content Include="app\web\filling.html" />
     <Content Include="app\web\images\medium.png" />
     <Content Include="app\web\images\small.png" />

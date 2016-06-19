@@ -1,0 +1,89 @@
+﻿@import "commonStyles.css";
+
+#common-div {
+    padding: 0;
+}
+
+#listView {
+    margin: 12px 0px 12px 0px;
+    height: 384px;
+    border: 1px solid #A9A9A9;
+}
+
+.listViewItemTemplate {
+    padding: 0;
+}
+
+.smallListIconTextItem-Detail {
+    padding: 10px;
+}
+
+.page-header .container {
+    margin-bottom: 38px;
+}
+
+#controls {
+    width: 444px;
+    padding-top: 24px;
+    padding-left: 12px;
+    padding-right: 24px;
+    padding-bottom: 24px;
+}
+
+#controls button {
+    width: 100%;
+}
+
+#buttons-div {
+    display: block;
+}
+
+#secret {
+    text-transform: lowercase;
+    background: -webkit-gradient(linear, left bottom,left top,color-stop(0.2, green),color-stop(0.8, blue)), black;
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+input[type=file] {
+    opacity: 0;
+    height: 0px;
+    max-width: none !important;
+}
+
+#input-list, #input-grid {
+    max-width: none !important;
+    width: 100%;
+}
+
+input {
+    width: 100%;
+    max-width: none !important;
+}
+
+#words {
+    margin-top: -44px;
+}
+
+@media (max-width: 768px) {
+
+#controls {
+    width: 100%;
+    padding-right: 0px;
+    padding-bottom: 0px;
+}
+
+#common-div {
+    display: block;
+    margin-bottom: 0;  
+}
+
+#listView {
+    height: auto;
+    padding-top: 6px;
+    padding-left: 6px;
+    margin-right: 0px;
+    margin-bottom: 0;
+}
+
+}

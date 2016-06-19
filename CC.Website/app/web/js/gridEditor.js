@@ -3,12 +3,11 @@
 
     var element = document.body;
 
-    var item, itemIndex;
-    itemIndex = -1;
+    var item, itemIndex, itemsList;
 
     function initializeTerms() {
         var items = [];
-        var itemsList = new WinJS.Binding.List(items);
+        itemsList = new WinJS.Binding.List(items);
 
         var list = document.getElementById("listView").winControl;
         list.itemDataSource = itemsList.dataSource;
@@ -23,10 +22,18 @@
         element.querySelector("#input-listFake").click();
     }
 
+    // Добавляет термин в коллекцию, используя готовые параметры.
+    function addTerm(answer, question) {
+        var term = {
+            title: question,
+            text: answer
+        };
+
+        itemsList.push(term);
+    }
+
     // Читает файл, полученный из диалога открытия. 
     function change(e) {
-        q.value = a.value = "";
-
         var file = e.target.files[0];
         if (!file)
             return;
@@ -36,7 +43,21 @@
             parse(contents);
         };
         reader.readAsText(file);
-        element.querySelector("#file-name").innerHTML = escape(file.name);
+    }
+
+    // Преобразует XML-коллекцию в её JavaScript-эквивалент. 
+    function parse(xml) {
+        itemsList.length = 0;
+        var xmlDoc = $.parseXML(xml);
+        var $xml = $(xmlDoc);
+
+        $xml.find('word').each(function () {
+            var id = $(this).find('ID').text();
+            var answer = $(this).find("answer").text();
+            var question = $(this).find("question").text();
+
+            addTerm(answer, question);
+        });
     }
 
     // Запускает процесс страницы веб-приложения.
