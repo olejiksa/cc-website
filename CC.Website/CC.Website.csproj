@@ -72,6 +72,7 @@
     <Content Include="app\web\filling.html" />
     <Content Include="app\web\images\medium.png" />
     <Content Include="app\web\images\small.png" />
+    <Content Include="app\web\js\gridEditor.js" />
     <Content Include="wide.png" />
     <Content Include="app\web\js\about.js" />
     <Content Include="app\web\js\actions.js" />

@@ -15,6 +15,7 @@
     <link href="../../WinJS/css/ui-light.css" rel="stylesheet">
     <script src="../../WinJS/js/base.min.js"></script>
     <script src="../../WinJS/js/ui.min.js"></script>
+    <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.12.2.min.js"></script>
     <link href="css/styles.css" rel="stylesheet">
 </head>
 <body>
@@ -45,15 +46,48 @@
         </div>
     </nav>
 
+    <!--Page header-->
     <div class="page-header">
         <div class="container" id="page-text-header">
             <h3>Редактор сетки</h3>
         </div>
     </div>
 
-    <div id="secret-div" class="container">
-        <p id="secret" class="type-h1">Shhh...<br>Let's no leak<br>our hard work</p>
-        <div id="gradient"></div>
+    <!--Common div-->
+    <div id="common-div" class="container">
+        <div id="controls">
+            <p class="type-h4" id="words">Слова</p>
+
+            <!--ListView ItemTemplate-->
+            <div class="container">
+                <div class="smallListIconTextTemplate" data-win-control="WinJS.Binding.Template">
+                    <div class="smallListTextItem">
+                        <div class="smallListIconTextItem-Detail">
+                            <h6 class="listViewItemTemplate" data-win-bind="textContent: text"></h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--ListView-->
+        <div id="listView"
+             class="win-selectionstylefilled"
+             data-win-control="WinJS.UI.ListView"
+             data-win-options="{
+            selectionMode: 'single',
+            itemsReorderable: true,
+            tapBehavior: WinJS.UI.TapBehavior.directSelect,
+            layout: { type: WinJS.UI.ListLayout }
+        }">
+        </div>
+
+        <div id="secret-div" class="form-group">
+            <a id="input-list" class="btn btn-default">Открыть список<input id="input-listFake" type="file"></a>
+            <a id="input-grid" class="btn btn-default">Открыть сетку<input id="input-gridFake" type="file"></a>
+            <button id="save" class="btn btn-default">Сохранить</button>
+            <p id="secret" class="type-h1">Shhh...<br>Let's no leak<br>our hard work</p>
+        </div>
     </div>
 
     <a class="back-to-top" href="#top">
@@ -62,6 +96,7 @@
     </a>
 
     <script src="js/secret.js"></script>
+    <script src="js/gridEditor.js"></script>
 
     <script src="../../js/vendor/bootstrap.min.js"></script>
     <script src="../../js/app.js"></script>
