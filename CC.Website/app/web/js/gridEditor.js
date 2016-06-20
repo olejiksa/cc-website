@@ -42,6 +42,8 @@
         else {
             rectArray["height"] = 25;
             rectArray["width"] = answer.length * 25;
+            rectArray["x"] += 25;
+            rectArray["y"] -= 25;
         }
 
         var rect = document.createElementNS(svgNS, "rect");
@@ -51,7 +53,7 @@
         rect.setAttribute("height", rectArray["height"]);
         rect.setAttribute("stroke", "#0071C4");
         rect.setAttribute("stroke-width", 1);
-        rect.setAttribute("fill", "white");
+        rect.setAttribute("fill", "transparent");
         svg.appendChild(rect);
 
         // Вычисление кол-ва требуемых линий.
@@ -180,9 +182,9 @@
         var $xml = $(xmlDoc);
 
         $xml.find("gridWord").each(function () {
-            var id = $(this).find("ID").text();
-            var x = $(this).find("X").text();
-            var y = $(this).find("Y").text();
+            var id = Number($(this).find("ID").text());
+            var x = Number($(this).find("X").text());
+            var y = Number($(this).find("Y").text());
             var orientation = $(this).find("orientation").text();
             var answer = $(this).find("answer").text();
             var question = $(this).find("question").text();
