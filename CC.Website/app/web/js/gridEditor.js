@@ -29,7 +29,7 @@
         // For to be ready.
         svgNS = svg.namespaceURI;
 
-        createWord("Horizontal", "байкал");
+        createWord("Vertical", "байкал");
     }
 
     // Создает сетку слова.
@@ -65,7 +65,7 @@
         alert(rectArray["lines_count"]);
 
         // Создание линий внутри прямоугольника со словом.
-        for (var i = 0; i < rectArray["lines_count"]; i++) {
+        for (var i = 0; i <= rectArray["lines_count"]; i++) {
             var line = document.createElementNS(svgNS, "line");
             var lineArray = { "x1": 0, "x2": 0, "y1": 0, "y2": 0 };
 
@@ -73,11 +73,31 @@
                 lineArray["x1"] = lineArray["x2"] = rectArray["x"] + rectArray["x"] * (i + 1);
                 lineArray["y1"] = rectArray["y"];
                 lineArray["y2"] = lineArray["y1"] + 25;
+                
+                var label = document.createElementNS(svgNS, "text");
+                label.setAttribute("x", lineArray["x1"] - 25 / 1.5);
+                label.setAttribute("y", lineArray["y2"] - 12.5 / 1.5);
+                var letter = document.createTextNode(word[i]);
+                label.appendChild(letter);
+                svg.appendChild(label);
+
+                if (i == rectArray["lines_count"])
+                    break;
             }
             else if (rectArray["width"] < rectArray["height"]) {
                 lineArray["x1"] = rectArray["x"];
                 lineArray["x2"] = lineArray["x1"] + 25;
                 lineArray["y1"] = lineArray["y2"] = rectArray["y"] + rectArray["y"] * (i + 1);
+
+                var label = document.createElementNS(svgNS, "text");
+                label.setAttribute("x", lineArray["x1"] + 12.5 / 1.5);
+                label.setAttribute("y", lineArray["y2"] - 12.5 / 1.5);
+                var letter = document.createTextNode(word[i]);
+                label.appendChild(letter);
+                svg.appendChild(label);
+
+                if (i == rectArray["lines_count"])
+                    break;
             }
 
             line.setAttribute("x1", lineArray["x1"]);
@@ -87,6 +107,12 @@
             line.setAttribute("stroke", "#0071C4");
             line.setAttribute("stroke-width", 1);
             svg.appendChild(line);
+        }
+
+        for (var i = 0; i <= rectArray["lines_count"]; i++) {
+            if (rectArray["width"] > rectArray["height"]) {
+
+            }
         }
     }
 
