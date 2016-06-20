@@ -4,6 +4,7 @@
     // Объявление некоторых данных.
     var element = document.body;
     var item, itemIndex, itemsList;
+    var svg, svgNS;
 
     // Инициализация данных.
     function initializeTerms() {
@@ -17,8 +18,8 @@
 
         element.querySelector("#save").disabled = true;
 
-        // Creating SVG.
-        var svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+        // Создание SVG.
+        svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
         svg.setAttribute("style", "border: 1px solid #A9A9A9");
         svg.setAttribute("width", 525);
         svg.setAttribute("height", 525);
@@ -26,10 +27,24 @@
         element.querySelector("#secret-div").appendChild(svg);
 
         // For to be ready.
-        var svgNS = svg.namespaceURI;
+        svgNS = svg.namespaceURI;
 
-        // Creating Rectangle.
-        var rectArray = { "x" : 25, "y" : 25, "width" : 25, "height" : 225, "lines_count" : 0 };
+        createWord("Horizontal", "байкал");
+    }
+
+    // Создает сетку слова.
+    function createWord(orientation, word) {
+        // Создание прямоугольника.
+        var rectArray = { "x": 25, "y": 25, "width": 0, "height": 0, "lines_count": 0 };
+
+        if (orientation == "Vertical") {
+            rectArray["width"] = 25;
+            rectArray["height"] = word.length * 25;
+        }
+        else {
+            rectArray["height"] = 25;
+            rectArray["width"] = word.length * 25;
+        }
 
         var rect = document.createElementNS(svgNS, "rect");
         rect.setAttribute("x", rectArray["x"]);
@@ -41,7 +56,7 @@
         rect.setAttribute("fill", "transparent");
         svg.appendChild(rect);
 
-        // Counting required lines.
+        // Вычисление кол-ва требуемых линий.
         var length = Math.max(rectArray["width"], rectArray["height"]);
         while (length > 25) {
             length -= 25;
@@ -49,7 +64,7 @@
         }
         alert(rectArray["lines_count"]);
 
-        // Creating lines.
+        // Создание линий внутри прямоугольника со словом.
         for (var i = 0; i < rectArray["lines_count"]; i++) {
             var line = document.createElementNS(svgNS, "line");
             var lineArray = { "x1": 0, "x2": 0, "y1": 0, "y2": 0 };
