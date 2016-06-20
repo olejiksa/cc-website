@@ -29,21 +29,22 @@
         // For to be ready.
         svgNS = svg.namespaceURI;
 
-        createWord("Vertical", "байкал");
+        createWord(25, 75, "Horizontal", "роман");
+        createWord(100, 25, "Vertical", "гладких");
     }
 
     // Создает сетку слова.
-    function createWord(orientation, word) {
+    function createWord(x, y, orientation, answer) {
         // Создание прямоугольника.
-        var rectArray = { "x": 25, "y": 25, "width": 0, "height": 0, "lines_count": 0 };
+        var rectArray = { "x": x, "y": y, "width": 0, "height": 0, "lines_count": 0 };
 
         if (orientation == "Vertical") {
             rectArray["width"] = 25;
-            rectArray["height"] = word.length * 25;
+            rectArray["height"] = answer.length * 25;
         }
         else {
             rectArray["height"] = 25;
-            rectArray["width"] = word.length * 25;
+            rectArray["width"] = answer.length * 25;
         }
 
         var rect = document.createElementNS(svgNS, "rect");
@@ -53,7 +54,7 @@
         rect.setAttribute("height", rectArray["height"]);
         rect.setAttribute("stroke", "#0071C4");
         rect.setAttribute("stroke-width", 1);
-        rect.setAttribute("fill", "transparent");
+        rect.setAttribute("fill", "white");
         svg.appendChild(rect);
 
         // Вычисление кол-ва требуемых линий.
@@ -62,7 +63,6 @@
             length -= 25;
             rectArray["lines_count"]++;
         }
-        alert(rectArray["lines_count"]);
 
         // Создание линий внутри прямоугольника со словом.
         for (var i = 0; i <= rectArray["lines_count"]; i++) {
@@ -70,14 +70,14 @@
             var lineArray = { "x1": 0, "x2": 0, "y1": 0, "y2": 0 };
 
             if (rectArray["width"] > rectArray["height"]) {
-                lineArray["x1"] = lineArray["x2"] = rectArray["x"] + rectArray["x"] * (i + 1);
+                lineArray["x1"] = lineArray["x2"] = rectArray["x"] + 25 * (i + 1);
                 lineArray["y1"] = rectArray["y"];
                 lineArray["y2"] = lineArray["y1"] + 25;
                 
                 var label = document.createElementNS(svgNS, "text");
                 label.setAttribute("x", lineArray["x1"] - 25 / 1.5);
                 label.setAttribute("y", lineArray["y2"] - 12.5 / 1.5);
-                var letter = document.createTextNode(word[i]);
+                var letter = document.createTextNode(answer[i]);
                 label.appendChild(letter);
                 svg.appendChild(label);
 
@@ -87,12 +87,12 @@
             else if (rectArray["width"] < rectArray["height"]) {
                 lineArray["x1"] = rectArray["x"];
                 lineArray["x2"] = lineArray["x1"] + 25;
-                lineArray["y1"] = lineArray["y2"] = rectArray["y"] + rectArray["y"] * (i + 1);
+                lineArray["y1"] = lineArray["y2"] = rectArray["y"] + 25 * (i + 1);
 
                 var label = document.createElementNS(svgNS, "text");
                 label.setAttribute("x", lineArray["x1"] + 12.5 / 1.5);
                 label.setAttribute("y", lineArray["y2"] - 12.5 / 1.5);
-                var letter = document.createTextNode(word[i]);
+                var letter = document.createTextNode(answer[i]);
                 label.appendChild(letter);
                 svg.appendChild(label);
 
