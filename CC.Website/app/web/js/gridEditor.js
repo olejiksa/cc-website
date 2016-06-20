@@ -136,7 +136,6 @@
 
     // Читает файл списка, полученный из диалога открытия. 
     function changeList(e) {
-        $("svg").empty();
         var file = e.target.files[0];
         if (!file)
             return;
@@ -150,6 +149,7 @@
 
     // Читает файл сетки, полученный из диалога открытия. 
     function changeGrid(e) {
+        $("svg").empty();
         var file = e.target.files[0];
         if (!file)
             return;
