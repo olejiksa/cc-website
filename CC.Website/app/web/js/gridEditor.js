@@ -28,9 +28,6 @@
 
         // For to be ready.
         svgNS = svg.namespaceURI;
-
-        createWord(25, 75, "Horizontal", "роман");
-        createWord(100, 25, "Vertical", "гладких");
     }
 
     // Создает сетку слова.
@@ -108,17 +105,16 @@
             line.setAttribute("stroke-width", 1);
             svg.appendChild(line);
         }
-
-        for (var i = 0; i <= rectArray["lines_count"]; i++) {
-            if (rectArray["width"] > rectArray["height"]) {
-
-            }
-        }
     }
 
-    // Открывает файл.
-    function open() {
+    // Открывает файл списка.
+    function openList() {
         element.querySelector("#input-listFake").click();
+    }
+
+    // Открывает файл сетки.
+    function openGrid() {
+        element.querySelector("#input-gridFake").click();
     }
 
     // Добавляет термин в коллекцию, используя готовые параметры.
@@ -131,31 +127,67 @@
         itemsList.push(term);
     }
 
-    // Читает файл, полученный из диалога открытия. 
-    function change(e) {
+    // Добавляет элемент сетки, используя готовые параметры.
+    function addElement(id, x, y, orientation, answer, question) {
+        createWord(x, y, orientation, answer);
+    }
+
+    // Читает файл списка, полученный из диалога открытия. 
+    function changeList(e) {
         var file = e.target.files[0];
         if (!file)
             return;
         var reader = new FileReader();
         reader.onload = function (e) {
             var contents = e.target.result;
-            parse(contents);
+            parseList(contents);
         };
         reader.readAsText(file);
     }
 
-    // Преобразует XML-коллекцию в её JavaScript-эквивалент. 
-    function parse(xml) {
+    // Читает файл сетки, полученный из диалога открытия. 
+    function changeGrid(e) {
+        var file = e.target.files[0];
+        if (!file)
+            return;
+        var reader = new FileReader();
+        reader.onload = function (e) {
+            var contents = e.target.result;
+            parseGrid(contents);
+        };
+        reader.readAsText(file);
+    }
+
+    // Преобразует XML-данные списка в её JavaScript-эквивалент. 
+    function parseList(xml) {
         itemsList.length = 0;
         var xmlDoc = $.parseXML(xml);
         var $xml = $(xmlDoc);
 
-        $xml.find('word').each(function () {
-            var id = $(this).find('ID').text();
+        $xml.find("word").each(function () {
+            var id = $(this).find("ID").text();
             var answer = $(this).find("answer").text();
             var question = $(this).find("question").text();
 
             addTerm(answer, question);
+        });
+    }
+
+    // Преобразует XML-данные сетки в её JavaScript-эквивалент. 
+    function parseGrid(xml) {
+        itemsList.length = 0;
+        var xmlDoc = $.parseXML(xml);
+        var $xml = $(xmlDoc);
+
+        $xml.find("gridWord").each(function () {
+            var id = $(this).find("ID").text();
+            var x = $(this).find("X").text();
+            var y = $(this).find("Y").text();
+            var orientation = $(this).find("orientation").text();
+            var answer = $(this).find("answer").text();
+            var question = $(this).find("question").text();
+
+            addElement(id, x, y, orientation, answer, question);
         });
     }
 
@@ -166,9 +198,13 @@
 
     // Запускает процесс страницы веб-приложения.
     WinJS.UI.processAll().then(function () {
-        element.querySelector("#input-listFake").addEventListener("change", change, false);
-        element.querySelector("#input-list").addEventListener("click", open, false);
-        element.querySelector("#input-listFake").addEventListener("click", open, false);
+        element.querySelector("#input-listFake").addEventListener("change", changeList, false);
+        element.querySelector("#input-list").addEventListener("click", openList, false);
+        element.querySelector("#input-listFake").addEventListener("click", openList, false);
+
+        element.querySelector("#input-gridFake").addEventListener("change", changeGrid, false);
+        element.querySelector("#input-grid").addEventListener("click", openGrid, false);
+        element.querySelector("#input-gridFake").addEventListener("click", openGrid, false);
 
         listView.addEventListener("iteminvoked", itemClick);
 
