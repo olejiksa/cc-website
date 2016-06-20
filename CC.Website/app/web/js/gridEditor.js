@@ -46,6 +46,10 @@
             rectArray["y"] -= 25;
         }
 
+        var g = document.createElementNS(svgNS, "g");
+        g.setAttribute("draggable", "true");
+        svg.appendChild(g);
+
         var rect = document.createElementNS(svgNS, "rect");
         rect.setAttribute("x", rectArray["x"]);
         rect.setAttribute("y", rectArray["y"]);
@@ -54,7 +58,7 @@
         rect.setAttribute("stroke", "#0071C4");
         rect.setAttribute("stroke-width", 1);
         rect.setAttribute("fill", "transparent");
-        svg.appendChild(rect);
+        g.appendChild(rect);
 
         // Вычисление кол-ва требуемых линий.
         var length = Math.max(rectArray["width"], rectArray["height"]);
@@ -78,7 +82,7 @@
                 label.setAttribute("y", lineArray["y2"] - 12.5 / 1.5);
                 var letter = document.createTextNode(answer[i]);
                 label.appendChild(letter);
-                svg.appendChild(label);
+                g.appendChild(label);
 
                 if (i == rectArray["lines_count"])
                     break;
@@ -93,7 +97,7 @@
                 label.setAttribute("y", lineArray["y2"] - 12.5 / 1.5);
                 var letter = document.createTextNode(answer[i]);
                 label.appendChild(letter);
-                svg.appendChild(label);
+                g.appendChild(label);
 
                 if (i == rectArray["lines_count"])
                     break;
@@ -105,7 +109,7 @@
             line.setAttribute("y2", lineArray["y2"]);
             line.setAttribute("stroke", "#0071C4");
             line.setAttribute("stroke-width", 1);
-            svg.appendChild(line);
+            g.appendChild(line);
         }
     }
 
