@@ -41,7 +41,7 @@
 
 #secret {
     text-transform: lowercase;
-    background: -webkit-gradient(linear, left bottom,left top,color-stop(0.2, green),color-stop(0.8, blue)), black;
+    background: -webkit-gradient(linear,left bottom,left top,color-stop(0.2, green),color-stop(0.8, blue)), black;
     -webkit-background-clip: text;
     color: transparent;
 }
@@ -72,6 +72,10 @@ input {
 
 #words2 {
     margin-top: -20px;
+    margin-bottom: 12px;
+}
+
+#secret-div {
     padding-left: 12px;
 }
 
@@ -81,6 +85,11 @@ input {
     width: 100%;
     padding-right: 0px;
     padding-bottom: 0px;
+}
+
+#secret-div {
+    margin-top: -20px;
+    padding-left: -12px;
 }
 
 #common-div {

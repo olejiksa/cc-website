@@ -1,10 +1,11 @@
 ﻿(function () {
     "use strict";
 
+    // Объявление некоторых данных.
     var element = document.body;
-
     var item, itemIndex, itemsList;
 
+    // Инициализация данных.
     function initializeTerms() {
         var items = [];
         itemsList = new WinJS.Binding.List(items);
@@ -15,6 +16,63 @@
         list.forceLayout();
 
         element.querySelector("#save").disabled = true;
+
+        // Creating SVG.
+        var svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+        svg.setAttribute("style", "border: 1px solid #A9A9A9");
+        svg.setAttribute("width", 525);
+        svg.setAttribute("height", 525);
+        svg.setAttributeNS("http://www.w3.org/2000/xmlns/", "xmlns:xlink", "http://www.w3.org/1999/xlink");
+        element.querySelector("#secret-div").appendChild(svg);
+
+        // For to be ready.
+        var svgNS = svg.namespaceURI;
+
+        // Creating Rectangle.
+        var rectArray = { "x" : 25, "y" : 25, "width" : 25, "height" : 225, "lines_count" : 0 };
+
+        var rect = document.createElementNS(svgNS, "rect");
+        rect.setAttribute("x", rectArray["x"]);
+        rect.setAttribute("y", rectArray["y"]);
+        rect.setAttribute("width", rectArray["width"]);
+        rect.setAttribute("height", rectArray["height"]);
+        rect.setAttribute("stroke", "#0071C4");
+        rect.setAttribute("stroke-width", 1);
+        rect.setAttribute("fill", "transparent");
+        svg.appendChild(rect);
+
+        // Counting required lines.
+        var length = Math.max(rectArray["width"], rectArray["height"]);
+        while (length > 25) {
+            length -= 25;
+            rectArray["lines_count"]++;
+        }
+        alert(rectArray["lines_count"]);
+
+        // Creating lines.
+        for (var i = 0; i < rectArray["lines_count"]; i++) {
+            var line = document.createElementNS(svgNS, "line");
+            var lineArray = { "x1": 0, "x2": 0, "y1": 0, "y2": 0 };
+
+            if (rectArray["width"] > rectArray["height"]) {
+                lineArray["x1"] = lineArray["x2"] = rectArray["x"] + rectArray["x"] * (i + 1);
+                lineArray["y1"] = rectArray["y"];
+                lineArray["y2"] = lineArray["y1"] + 25;
+            }
+            else if (rectArray["width"] < rectArray["height"]) {
+                lineArray["x1"] = rectArray["x"];
+                lineArray["x2"] = lineArray["x1"] + 25;
+                lineArray["y1"] = lineArray["y2"] = rectArray["y"] + rectArray["y"] * (i + 1);
+            }
+
+            line.setAttribute("x1", lineArray["x1"]);
+            line.setAttribute("x2", lineArray["x2"]);
+            line.setAttribute("y1", lineArray["y1"]);
+            line.setAttribute("y2", lineArray["y2"]);
+            line.setAttribute("stroke", "#0071C4");
+            line.setAttribute("stroke-width", 1);
+            svg.appendChild(line);
+        }
     }
 
     // Открывает файл.
@@ -60,11 +118,18 @@
         });
     }
 
+    // Передает данные в поля формы для редактирования.
+    function itemClick(eventInfo) {
+        item = itemsList.getAt(eventInfo.detail.itemIndex);
+    }
+
     // Запускает процесс страницы веб-приложения.
     WinJS.UI.processAll().then(function () {
         element.querySelector("#input-listFake").addEventListener("change", change, false);
         element.querySelector("#input-list").addEventListener("click", open, false);
         element.querySelector("#input-listFake").addEventListener("click", open, false);
+
+        listView.addEventListener("iteminvoked", itemClick);
 
         initializeTerms();
     });

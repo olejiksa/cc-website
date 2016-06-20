@@ -1,4 +1,5 @@
 ﻿(function () {
+    "use strict";
 
     var item, itemIndex;
     itemIndex = -1;
@@ -6,12 +7,10 @@
     var itemsList = {};
     var element = document.body;
 
-    var head = document.getElementsByTagName('head')[0];
-    var script = document.createElement('script');
-    script.type = 'text/javascript';
+    var head = document.getElementsByTagName("head")[0];
+    var script = document.createElement("script");
+    script.type = "text/javascript";
     script.src = "http://danml.com/js/download2.js";
-
-    // Fire the loading
     head.appendChild(script);
 
     var q = element.querySelector("#question");
@@ -149,7 +148,7 @@
         var $xml = $(xmlDoc);
 
         $xml.find('word').each(function () {
-            var id = $(this).find('ID').text();
+            var id = $(this).find("ID").text();
             var answer = $(this).find("answer").text();
             var question = $(this).find("question").text();
 
