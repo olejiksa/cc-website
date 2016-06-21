@@ -120,11 +120,12 @@
     function click(e) {
         for (var i = 0; i < index; i++) {
             var b = svg.getElementById(i).childNodes[0];
-            b.setAttribute("stroke", "#0071C4");
+            b.setAttribute("stroke-width", 1);
         }
 
         var a1 = svg.getElementById(e.target.parentNode.id).childNodes[0];
-        a1.setAttribute("stroke", "red");
+        //a1.setAttribute("stroke", "red");
+        a1.setAttribute("stroke-width", 3);
 
         var a = e.target.parentNode;
 
