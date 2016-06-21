@@ -57,6 +57,7 @@
         svg.appendChild(g);
 
         g.addEventListener("click", click, false);
+
         document.onkeydown = function (evt) {
             evt = evt || window.event;
 
@@ -101,6 +102,8 @@
                         }
                     }
                     break;
+                case 32:
+                    doubleclick();
             }
         };
 
@@ -180,6 +183,43 @@
         a1.setAttribute("stroke-width", 3);
 
         a = e.target.parentNode;
+    }
+
+    function doubleclick() {
+        var a1 = svg.getElementById(a.id);
+        var b1 = a1.childNodes[0];
+        /*var j = 0;
+        for (var i in svg.childNodes) {
+            var b = svg.childNodes[i];
+            if (i !== "length" && i !== "item") {
+                b.setAttribute("id", j);
+                j++;
+            }
+        }*/
+        if (b1.getAttribute("orientation") === "Horizontal")
+            b1.setAttribute("orientation", "Vertical");
+        else
+            b1.setAttribute("orientation", "Horizontal");
+
+        a1.remove();
+        index--;
+        
+        var j = 0;
+        for (var i in svg.childNodes) {
+            var b = svg.childNodes[i];
+            if (i !== "length" && i !== "item") {
+                b.setAttribute("id", j);
+                b.setAttribute("stroke-width", 1);
+                j++;
+            }
+        }
+
+        createWord(Number(b1.getAttribute("x")),
+            Number(b1.getAttribute("y")), b1.getAttribute("orientation"), b1.getAttribute("answer"), b1.getAttribute("question"));
+
+        var a2 = svg.getElementById(index - 1).childNodes[0];
+        a2.setAttribute("stroke-width", 3);
+        a = svg.getElementById(index - 1);
     }
 
     // Открывает файл списка.
