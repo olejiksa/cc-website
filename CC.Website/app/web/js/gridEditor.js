@@ -97,7 +97,7 @@
                     for (var i in svg.childNodes) {
                         var b = svg.childNodes[i];
                         if (i !== "length" && i !== "item") {
-                            b.setAttribute("id", j);
+                            b["id"] = j;
                             j++;
                         }
                     }
@@ -319,9 +319,10 @@
             answers[i] = questions[i] = orientations[i] = x[i] = y[i] = '';
             var b = svg.childNodes[i];
 
-            if (i !== "length" && i !== "item") {
-                answers[i] += b.firstChild.getAttribute("answer");
-                orientations[i] += b.firstChild.getAttribute("orientation");
+            if (i !== "length" && i !== "item" && i !== "keys" && i !== "values" && i !== "entries" && i !== "forEach") {
+                answers[i] += b.firstChild.attributes["answer"].nodeValue;
+                questions[i] += b.firstChild.attributes["question"].nodeValue;
+                orientations[i] += b.firstChild.attributes["orientation"].nodeValue;
 
                 if (orientations[i] == "Horizontal") {
                     x[i] += Number(b.firstChild.getAttribute("x")) - 25;
@@ -338,7 +339,7 @@
         xml += "<head>";
         var j = 0;
         for (var i in svg.childNodes) {
-            if (i !== "length" && i !== "item") {
+            if (i !== "length" && i !== "item" && i !== "keys" && i !== "values" && i !== "entries" && i !== "forEach") {
                 xml += "<gridWord><ID>" + j.toString() + "</ID><X>" + x[j] + "</X><Y>" + y[j] + "</Y><orientation>" + orientations[j] + "</orientation><answer>" + answers[j] + "</answer><question>" + questions[j] + "</question></gridWord>";
                 j++;
             }
