@@ -85,6 +85,18 @@
                         a.childNodes[i].setAttribute("y2", 25 + Number(a.childNodes[i].getAttribute("y2")));
                     }
                     break;
+                case 46:
+                    a.remove();
+                    index--;
+                    var j = 0;
+                    for (var i in svg.childNodes) {
+                        var b = svg.childNodes[i];
+                        if (i !== "length" && i !== "item") {
+                            b.setAttribute("id", j);
+                            j++;
+                        }
+                    }
+                    break;
             }
         };
 
