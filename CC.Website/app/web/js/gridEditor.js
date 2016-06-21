@@ -118,8 +118,16 @@
     }
 
     function click(e) {
-        var a = svg.getElementById(e.target.parentNode.id);
-        a.childNodes[0].setAttribute("stroke", "red");
+        for (var i = 0; i < index; i++) {
+            var b = svg.getElementById(i).childNodes[0];
+            b.setAttribute("stroke", "#0071C4");
+        }
+
+        var a1 = svg.getElementById(e.target.parentNode.id).childNodes[0];
+        a1.setAttribute("stroke", "red");
+
+        var a = e.target.parentNode;
+
         for (var i = 0; i < a.childNodes.length; i++) {
             a.childNodes[i].setAttribute("x", 25 + Number(a.childNodes[i].getAttribute("x")));
             a.childNodes[i].setAttribute("x1", 25 + Number(a.childNodes[i].getAttribute("x1")));
