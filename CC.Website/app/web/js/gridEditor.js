@@ -53,7 +53,7 @@
         svg.appendChild(g);
 
         g.addEventListener("click", click, false);
-        document.onkeyup = function (evt) {
+        document.onkeydown = function (evt) {
             evt = evt || window.event;
 
             switch (evt.keyCode) {
