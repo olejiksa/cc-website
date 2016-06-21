@@ -3,8 +3,10 @@
 
     // Объявление некоторых данных.
     var element = document.body;
-    var item, itemIndex, itemsList;
+    var item, itemIndex, itemsList, isMoving, g, index;
     var svg, svgNS;
+
+    index = 0;
 
     // Инициализация данных.
     function initializeTerms() {
@@ -46,9 +48,11 @@
             rectArray["y"] -= 25;
         }
 
-        var g = document.createElementNS(svgNS, "g");
-        g.setAttribute("draggable", "true");
+        g = document.createElementNS(svgNS, "g");
+        g.setAttribute("id", index++);
         svg.appendChild(g);
+
+        g.addEventListener("click", click, false);
 
         var rect = document.createElementNS(svgNS, "rect");
         rect.setAttribute("x", rectArray["x"]);
@@ -113,6 +117,16 @@
         }
     }
 
+    function click(e) {
+        var a = svg.getElementById(e.target.parentNode.id);
+        a.childNodes[0].setAttribute("stroke", "red");
+        for (var i = 0; i < a.childNodes.length; i++) {
+            a.childNodes[i].setAttribute("x", 25 + Number(a.childNodes[i].getAttribute("x")));
+            a.childNodes[i].setAttribute("x1", 25 + Number(a.childNodes[i].getAttribute("x1")));
+            a.childNodes[i].setAttribute("x2", 25 + Number(a.childNodes[i].getAttribute("x2")));
+        }
+    }
+
     // Открывает файл списка.
     function openList() {
         element.querySelector("#input-listFake").click();
@@ -154,6 +168,7 @@
     // Читает файл сетки, полученный из диалога открытия. 
     function changeGrid(e) {
         $("svg").empty();
+        index = 0;
         var file = e.target.files[0];
         if (!file)
             return;
