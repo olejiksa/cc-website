@@ -4,7 +4,7 @@
     // Объявление некоторых данных.
     var element = document.body;
     var item, itemIndex, itemsList, isMoving, g, index;
-    var svg, svgNS;
+    var svg, svgNS, a;
 
     index = 0;
 
@@ -53,6 +53,40 @@
         svg.appendChild(g);
 
         g.addEventListener("click", click, false);
+        document.onkeyup = function (evt) {
+            evt = evt || window.event;
+
+            switch (evt.keyCode) {
+                case 37:
+                    for (var i = 0; i < a.childNodes.length; i++) {
+                        a.childNodes[i].setAttribute("x", Number(a.childNodes[i].getAttribute("x")) - 25);
+                        a.childNodes[i].setAttribute("x1", Number(a.childNodes[i].getAttribute("x1")) - 25);
+                        a.childNodes[i].setAttribute("x2", Number(a.childNodes[i].getAttribute("x2")) - 25);
+                    }
+                    break;
+                case 38:
+                    for (var i = 0; i < a.childNodes.length; i++) {
+                        a.childNodes[i].setAttribute("y", Number(a.childNodes[i].getAttribute("y")) - 25);
+                        a.childNodes[i].setAttribute("y1", Number(a.childNodes[i].getAttribute("y1")) - 25);
+                        a.childNodes[i].setAttribute("y2", Number(a.childNodes[i].getAttribute("y2")) - 25);
+                    }
+                    break;
+                case 39:
+                    for (var i = 0; i < a.childNodes.length; i++) {
+                        a.childNodes[i].setAttribute("x", 25 + Number(a.childNodes[i].getAttribute("x")));
+                        a.childNodes[i].setAttribute("x1", 25 + Number(a.childNodes[i].getAttribute("x1")));
+                        a.childNodes[i].setAttribute("x2", 25 + Number(a.childNodes[i].getAttribute("x2")));
+                    }
+                    break;
+                case 40:
+                    for (var i = 0; i < a.childNodes.length; i++) {
+                        a.childNodes[i].setAttribute("y", 25 + Number(a.childNodes[i].getAttribute("y")));
+                        a.childNodes[i].setAttribute("y1", 25 + Number(a.childNodes[i].getAttribute("y1")));
+                        a.childNodes[i].setAttribute("y2", 25 + Number(a.childNodes[i].getAttribute("y2")));
+                    }
+                    break;
+            }
+        };
 
         var rect = document.createElementNS(svgNS, "rect");
         rect.setAttribute("x", rectArray["x"]);
@@ -124,16 +158,9 @@
         }
 
         var a1 = svg.getElementById(e.target.parentNode.id).childNodes[0];
-        //a1.setAttribute("stroke", "red");
         a1.setAttribute("stroke-width", 3);
 
-        var a = e.target.parentNode;
-
-        for (var i = 0; i < a.childNodes.length; i++) {
-            a.childNodes[i].setAttribute("x", 25 + Number(a.childNodes[i].getAttribute("x")));
-            a.childNodes[i].setAttribute("x1", 25 + Number(a.childNodes[i].getAttribute("x1")));
-            a.childNodes[i].setAttribute("x2", 25 + Number(a.childNodes[i].getAttribute("x2")));
-        }
+        a = e.target.parentNode;
     }
 
     // Открывает файл списка.
