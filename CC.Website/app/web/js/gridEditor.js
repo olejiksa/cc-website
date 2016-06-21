@@ -292,7 +292,6 @@
 
     // Преобразует XML-данные сетки в её JavaScript-эквивалент. 
     function parseGrid(xml) {
-        itemsList.length = 0;
         var xmlDoc = $.parseXML(xml);
         var $xml = $(xmlDoc);
 
@@ -352,6 +351,13 @@
     // Передает данные в поля формы для редактирования.
     function itemClick(eventInfo) {
         item = itemsList.getAt(eventInfo.detail.itemIndex);
+        element.querySelector("#add").disabled = false;
+        itemIndex = eventInfo.detail.itemIndex;
+    }
+
+    // Передает элемент из списка в сетку.
+    function add() {
+        createWord(0, 50, "Horizontal", item.text, item.title);
     }
 
     // Запускает процесс страницы веб-приложения.
@@ -365,6 +371,8 @@
         element.querySelector("#input-gridFake").addEventListener("click", openGrid, false);
 
         listView.addEventListener("iteminvoked", itemClick);
+        element.querySelector("#add").disabled = true;
+        element.querySelector("#add").addEventListener("click", add, false);
 
         element.querySelector("#save").addEventListener("click", saveGrid, false);
 
