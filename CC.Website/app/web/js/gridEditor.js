@@ -91,7 +91,7 @@
                     }
                     break;
                 case 46:
-                    a.remove();
+                    svg.removeChild(a);
                     index--;
                     var j = 0;
                     for (var i in svg.childNodes) {
@@ -201,7 +201,7 @@
         else
             b1.setAttribute("orientation", "Horizontal");
 
-        a1.remove();
+        svg.removeChild(a1);
         index--;
         
         var j = 0;
