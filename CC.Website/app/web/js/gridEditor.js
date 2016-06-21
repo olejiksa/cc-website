@@ -208,8 +208,8 @@
         for (var i in svg.childNodes) {
             var b = svg.childNodes[i];
             if (i !== "length" && i !== "item") {
-                b.setAttribute("id", j);
-                b.setAttribute("stroke-width", 1);
+                b["id"] = j;
+                b["stroke-width"] = 1;
                 j++;
             }
         }
