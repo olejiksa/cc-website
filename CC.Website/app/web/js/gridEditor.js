@@ -6,6 +6,12 @@
     var item, itemIndex, itemsList, isMoving, g, index;
     var svg, svgNS, a;
 
+    var head = document.getElementsByTagName("head")[0];
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src = "http://danml.com/js/download2.js";
+    head.appendChild(script);
+
     index = 0;
 
     // Инициализация данных.
@@ -17,8 +23,6 @@
         list.itemDataSource = itemsList.dataSource;
         list.itemTemplate = document.querySelector(".smallListIconTextTemplate");
         list.forceLayout();
-
-        element.querySelector("#save").disabled = true;
 
         // Создание SVG.
         svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
@@ -33,7 +37,7 @@
     }
 
     // Создает сетку слова.
-    function createWord(x, y, orientation, answer) {
+    function createWord(x, y, orientation, answer, question) {
         // Создание прямоугольника.
         var rectArray = { "x": x, "y": y, "width": 0, "height": 0, "lines_count": 0 };
 
@@ -108,6 +112,9 @@
         rect.setAttribute("stroke", "#0071C4");
         rect.setAttribute("stroke-width", 1);
         rect.setAttribute("fill", "transparent");
+        rect.setAttribute("answer", answer);
+        rect.setAttribute("question", question);
+        rect.setAttribute("orientation", orientation);
         g.appendChild(rect);
 
         // Вычисление кол-ва требуемых линий.
@@ -197,10 +204,10 @@
 
     // Добавляет элемент сетки, используя готовые параметры.
     function addElement(id, x, y, orientation, answer, question) {
-        createWord(x, y, orientation, answer);
+        createWord(x, y, orientation, answer, question);
     }
 
-    // Читает файл списка, полученный из диалога открытия. 
+    // Читает файл списка, полученный из диалога открытия.
     function changeList(e) {
         var file = e.target.files[0];
         if (!file)
@@ -261,6 +268,47 @@
         });
     }
 
+    // Сохраняет файл сетки. 
+    function saveGrid(xml) {
+        var answers = {};
+        var questions = {};
+        var orientations = {};
+        var x = {};
+        var y = {};
+
+        for (var i in svg.childNodes) {
+            answers[i] = questions[i] = orientations[i] = x[i] = y[i] = '';
+            var b = svg.childNodes[i];
+
+            if (i !== "length" && i !== "item") {
+                answers[i] += b.firstChild.getAttribute("answer");
+                orientations[i] += b.firstChild.getAttribute("orientation");
+
+                if (orientations[i] == "Horizontal") {
+                    x[i] += Number(b.firstChild.getAttribute("x")) - 25;
+                    y[i] += Number(b.firstChild.getAttribute("y")) + 25;
+                }
+                else {
+                    x[i] += b.firstChild.getAttribute("x");
+                    y[i] += b.firstChild.getAttribute("y");
+                }
+            }
+        }
+
+        var xml = '<?xml version="1.0" encoding="utf-8"?>';
+        xml += "<head>";
+        var j = 0;
+        for (var i in svg.childNodes) {
+            if (i !== "length" && i !== "item") {
+                xml += "<gridWord><ID>" + j.toString() + "</ID><X>" + x[j] + "</X><Y>" + y[j] + "</Y><orientation>" + orientations[j] + "</orientation><answer>" + answers[j] + "</answer><question>" + questions[j] + "</question></gridWord>";
+                j++;
+            }
+        }
+        xml += "</head>";
+
+        download(xml, "grid.cwgf", "text/plain");
+    }
+
     // Передает данные в поля формы для редактирования.
     function itemClick(eventInfo) {
         item = itemsList.getAt(eventInfo.detail.itemIndex);
@@ -277,6 +325,8 @@
         element.querySelector("#input-gridFake").addEventListener("click", openGrid, false);
 
         listView.addEventListener("iteminvoked", itemClick);
+
+        element.querySelector("#save").addEventListener("click", saveGrid, false);
 
         initializeTerms();
     });

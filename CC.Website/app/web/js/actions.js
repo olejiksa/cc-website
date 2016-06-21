@@ -82,7 +82,7 @@
         itemIndex = -1;
     }
 
-    // Сохраняет файл.
+    // Сохраняет файл списка.
     function save() {
         var list = document.getElementById("listView").winControl.itemDataSource.list;
         var j = 1;
