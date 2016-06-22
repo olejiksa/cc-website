@@ -80,7 +80,7 @@ input {
 }
 
 №buttons-div button {
-    width: 100% !important;
+    width: auto !important;
     max-width: none !important;
 }
 
