@@ -35,10 +35,6 @@
     width: 100%;
 }
 
-#buttons-div {
-    display: block;
-}
-
 #secret {
     text-transform: lowercase;
     background: -webkit-gradient(linear,left bottom,left top,color-stop(0.2, green),color-stop(0.8, blue)), black;
@@ -74,6 +70,18 @@ input {
 #svg-div {
     flex: 1;
     padding-left: 12px;
+    min-width: 500px;
+}
+
+#buttons-div {
+    margin-top: -6px;
+    max-width: none !important;
+    width: 100% !important;
+}
+
+№buttons-div button {
+    width: 100% !important;
+    max-width: none !important;
 }
 
 @media (max-width: 768px) {
@@ -87,6 +95,7 @@ input {
 #svg-div {
     margin-top: -20px;
     padding-left: -12px;
+    min-width: unset;
 }
 
 #common-div {

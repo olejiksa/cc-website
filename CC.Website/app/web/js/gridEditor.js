@@ -28,12 +28,25 @@
         svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
         svg.setAttribute("style", "border: 1px solid #A9A9A9");
         svg.setAttribute("width", "100%");
-        svg.setAttribute("height", 528);
+        svg.setAttribute("height", 480);
         svg.setAttributeNS("http://www.w3.org/2000/xmlns/", "xmlns:xlink", "http://www.w3.org/1999/xlink");
-        element.querySelector("#svg-div").appendChild(svg);
+        element.querySelector("#svg-internal-div").appendChild(svg);
+
+        disable(true);
 
         // For to be ready.
         svgNS = svg.namespaceURI;
+    }
+
+    // Управляет свойством disabled у элементов управления блоком слова в сетке.
+    function disable(bool) {
+        element.querySelector("#up").disabled =
+        element.querySelector("#right").disabled =
+        element.querySelector("#down").disabled =
+        element.querySelector("#left").disabled =
+        element.querySelector("#rotate").disabled =
+        element.querySelector("#delete").disabled =
+            bool;
     }
 
     // Создает сетку слова.
@@ -92,6 +105,7 @@
                     break;
                 case 46:
                     svg.removeChild(a);
+                    disable(true);
                     index--;
                     var j = 0;
                     for (var i in svg.childNodes) {
@@ -178,11 +192,14 @@
         }
     }
 
+    // Обрабатывает обычный клик на блоке со словом.
     function click(e) {
         for (var i = 0; i < index; i++) {
             var b = svg.getElementById(i).childNodes[0];
             b.setAttribute("stroke-width", 1);
         }
+
+        disable(false);
 
         var a1 = svg.getElementById(e.target.parentNode.id).childNodes[0];
         a1.setAttribute("stroke-width", 3);
@@ -190,17 +207,11 @@
         a = e.target.parentNode;
     }
 
+    // Обрабатывает двойной клик на блоке со словом.
     function doubleclick() {
         var a1 = svg.getElementById(a.id);
         var b1 = a1.childNodes[0];
-        /*var j = 0;
-        for (var i in svg.childNodes) {
-            var b = svg.childNodes[i];
-            if (i !== "length" && i !== "item") {
-                b.setAttribute("id", j);
-                j++;
-            }
-        }*/
+        
         if (b1.getAttribute("orientation") === "Horizontal")
             b1.setAttribute("orientation", "Vertical");
         else
@@ -220,7 +231,8 @@
         }
 
         createWord(Number(b1.getAttribute("x")),
-            Number(b1.getAttribute("y")), b1.getAttribute("orientation"), b1.getAttribute("answer"), b1.getAttribute("question"));
+            Number(b1.getAttribute("y")),
+            b1.getAttribute("orientation"), b1.getAttribute("answer"), b1.getAttribute("question"));
 
         var a2 = svg.getElementById(index - 1).childNodes[0];
         a2.setAttribute("stroke-width", 3);
@@ -267,6 +279,7 @@
 
     // Читает файл сетки, полученный из диалога открытия. 
     function changeGrid(e) {
+        disable(true);
         $("svg").empty();
         index = 0;
         var file = e.target.files[0];
@@ -345,7 +358,9 @@
         var j = 0;
         for (var i in svg.childNodes) {
             if (i !== "length" && i !== "item" && i !== "keys" && i !== "values" && i !== "entries" && i !== "forEach") {
-                xml += "<gridWord><ID>" + j.toString() + "</ID><X>" + x[j] + "</X><Y>" + y[j] + "</Y><orientation>" + orientations[j] + "</orientation><answer>" + answers[j] + "</answer><question>" + questions[j] + "</question></gridWord>";
+                xml += "<gridWord><ID>" + j.toString() + "</ID><X>" + x[j]
+                    + "</X><Y>" + y[j] + "</Y><orientation>" + orientations[j]
+                    + "</orientation><answer>" + answers[j] + "</answer><question>" + questions[j] + "</question></gridWord>";
                 j++;
             }
         }
@@ -366,6 +381,52 @@
         createWord(0, 50, "Horizontal", item.text, item.title);
     }
 
+    function up() {
+        for (var i = 0; i < a.childNodes.length; i++) {
+            a.childNodes[i].setAttribute("y", Number(a.childNodes[i].getAttribute("y")) - 25);
+            a.childNodes[i].setAttribute("y1", Number(a.childNodes[i].getAttribute("y1")) - 25);
+            a.childNodes[i].setAttribute("y2", Number(a.childNodes[i].getAttribute("y2")) - 25);
+        }
+    }
+
+    function right() {
+        for (var i = 0; i < a.childNodes.length; i++) {
+            a.childNodes[i].setAttribute("x", 25 + Number(a.childNodes[i].getAttribute("x")));
+            a.childNodes[i].setAttribute("x1", 25 + Number(a.childNodes[i].getAttribute("x1")));
+            a.childNodes[i].setAttribute("x2", 25 + Number(a.childNodes[i].getAttribute("x2")));
+        }
+    }
+
+    function down() {
+        for (var i = 0; i < a.childNodes.length; i++) {
+            a.childNodes[i].setAttribute("y", 25 + Number(a.childNodes[i].getAttribute("y")));
+            a.childNodes[i].setAttribute("y1", 25 + Number(a.childNodes[i].getAttribute("y1")));
+            a.childNodes[i].setAttribute("y2", 25 + Number(a.childNodes[i].getAttribute("y2")));
+        }
+    }
+
+    function left() {
+        for (var i = 0; i < a.childNodes.length; i++) {
+            a.childNodes[i].setAttribute("x", Number(a.childNodes[i].getAttribute("x")) - 25);
+            a.childNodes[i].setAttribute("x1", Number(a.childNodes[i].getAttribute("x1")) - 25);
+            a.childNodes[i].setAttribute("x2", Number(a.childNodes[i].getAttribute("x2")) - 25);
+        }
+    }
+
+    function remove() {
+        svg.removeChild(a);
+        disable(true);
+        index--;
+        var j = 0;
+        for (var i in svg.childNodes) {
+            var b = svg.childNodes[i];
+            if (i !== "length" && i !== "item") {
+                b["id"] = j;
+                j++;
+            }
+        }
+    }
+
     // Запускает процесс страницы веб-приложения.
     WinJS.UI.processAll().then(function () {
         element.querySelector("#input-listFake").addEventListener("change", changeList, false);
@@ -381,6 +442,13 @@
         element.querySelector("#add").addEventListener("click", add, false);
 
         element.querySelector("#save").addEventListener("click", saveGrid, false);
+
+        element.querySelector("#up").addEventListener("click", up, false);
+        element.querySelector("#down").addEventListener("click", down, false);
+        element.querySelector("#left").addEventListener("click", left, false);
+        element.querySelector("#right").addEventListener("click", right, false);
+        element.querySelector("#rotate").addEventListener("click", doubleclick, false);
+        element.querySelector("#delete").addEventListener("click", remove, false);
 
         initializeTerms();
     });
