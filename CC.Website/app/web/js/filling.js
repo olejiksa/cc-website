@@ -159,10 +159,11 @@
             b.setAttribute("stroke-width", 1);
         }
 
-        var a1 = svg.getElementById(e.target.parentNode.id).childNodes[0];
+        a = e.target.parentNode;
+        var a1 = svg.getElementById(a.id).childNodes[0];
         a1.setAttribute("stroke-width", 3);
 
-        a = e.target.parentNode;
+        document.getElementById("listView").winControl.selection.set(Number(e.target.parentNode.id));
     }
 
     // Запускает процесс страницы веб-приложения.
