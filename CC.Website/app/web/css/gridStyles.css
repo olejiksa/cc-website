@@ -46,10 +46,6 @@
     color: transparent;
 }
 
-#secret-div {
-    flex: 1;
-}
-
 input[type=file] {
     opacity: 0;
     height: 0px;
@@ -75,7 +71,8 @@ input {
     margin-bottom: 12px;
 }
 
-#secret-div {
+#svg-div {
+    flex: 1;
     padding-left: 12px;
 }
 
@@ -87,7 +84,7 @@ input {
     padding-bottom: 0px;
 }
 
-#secret-div {
+#svg-div {
     margin-top: -20px;
     padding-left: -12px;
 }
