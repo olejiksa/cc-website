@@ -8,3 +8,11 @@
     width: 100%;
     max-width: none !important;
 }
+
+@media (max-width: 768px) {
+
+#listView {
+    height: auto;
+}
+
+}

@@ -166,6 +166,20 @@
         document.getElementById("listView").winControl.selection.set(Number(e.target.parentNode.id));
     }
 
+    // Передает данные в поля формы для редактирования.
+    function itemClick(eventInfo) {
+        itemIndex = eventInfo.detail.itemIndex;
+
+        for (var i = 0; i < index; i++) {
+            var b = svg.getElementById(i).firstChild;
+            b.setAttribute("stroke-width", 1);
+        }
+
+        a = svg.getElementById(itemIndex).parentNode;
+        var a1 = svg.getElementById(itemIndex).childNodes[0];
+        a1.setAttribute("stroke-width", 3);
+    }
+
     // Запускает процесс страницы веб-приложения.
     WinJS.UI.processAll().then(function () {
         element.querySelector("#input-fake").addEventListener("change", change, false);
@@ -173,6 +187,8 @@
         element.querySelector("#input-fake").addEventListener("click", open, false);
 
         element.querySelector("#check").disabled = true;
+
+        listView.addEventListener("iteminvoked", itemClick);
 
         initialize();
     });
