@@ -1,12 +1,17 @@
 ﻿@import "gridStyles.css";
 
 #listView {
-    height: 384px;
+    height: 302px;
 }
 
 #input, #input-fake {
     width: 100%;
     max-width: none !important;
+}
+
+#answerField {
+    margin-top: 21px;
+    margin-bottom: -20px;
 }
 
 @media (max-width: 768px) {
