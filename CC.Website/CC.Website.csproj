@@ -69,10 +69,12 @@
     <Content Include="app\update.txt" />
     <Content Include="app\web\about.html" />
     <Content Include="app\web\css\commonStyles.css" />
+    <Content Include="app\web\css\fillStyles.css" />
     <Content Include="app\web\css\gridStyles.css" />
     <Content Include="app\web\filling.html" />
     <Content Include="app\web\images\medium.png" />
     <Content Include="app\web\images\small.png" />
+    <Content Include="app\web\js\filling.js" />
     <Content Include="app\web\js\gridEditor.js" />
     <Content Include="wide.png" />
     <Content Include="app\web\js\about.js" />
