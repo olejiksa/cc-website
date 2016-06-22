@@ -120,6 +120,11 @@
         rect.setAttribute("orientation", orientation);
         g.appendChild(rect);
 
+        var title = document.createElementNS(svgNS, "title");
+        var titleText = document.createTextNode(question);
+        title.appendChild(titleText);
+        g.appendChild(title);
+
         // Вычисление кол-ва требуемых линий.
         var length = Math.max(rectArray["width"], rectArray["height"]);
         while (length > 25) {
