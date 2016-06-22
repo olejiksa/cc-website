@@ -30,9 +30,9 @@
         svgNS = svg.namespaceURI;
     }
 
-    // Открывает файл сетки.
-    function openList() {
-        element.querySelector("#input-listFake").click();
+    // Открывает файл.
+    function open() {
+        element.querySelector("#input-fake").click();
     }
 
     // Добавляет термин в коллекцию, используя готовые параметры.
@@ -45,26 +45,26 @@
         itemsList.push(term);
     }
 
-    // Читает файл списка, полученный из диалога открытия.
-    function changeList(e) {
+    // Читает файл, полученный из диалога открытия.
+    function change(e) {
         var file = e.target.files[0];
         if (!file)
             return;
         var reader = new FileReader();
         reader.onload = function (e) {
             var contents = e.target.result;
-            parseList(contents);
+            parse(contents);
         };
         reader.readAsText(file);
     }
 
-    // Преобразует XML-данные списка в её JavaScript-эквивалент. 
-    function parseList(xml) {
+    // Преобразует XML-данные в JavaScript-эквивалент. 
+    function parse(xml) {
         itemsList.length = 0;
         var xmlDoc = $.parseXML(xml);
         var $xml = $(xmlDoc);
 
-        $xml.find("word").each(function () {
+        $xml.find("gridWord").each(function () {
             var id = $(this).find("ID").text();
             var answer = $(this).find("answer").text();
             var question = $(this).find("question").text();
@@ -75,9 +75,9 @@
 
     // Запускает процесс страницы веб-приложения.
     WinJS.UI.processAll().then(function () {
-        element.querySelector("#input-listFake").addEventListener("change", changeList, false);
-        element.querySelector("#input-list").addEventListener("click", openList, false);
-        element.querySelector("#input-listFake").addEventListener("click", openList, false);
+        element.querySelector("#input-fake").addEventListener("change", change, false);
+        element.querySelector("#input").addEventListener("click", open, false);
+        element.querySelector("#input-fake").addEventListener("click", open, false);
 
         element.querySelector("#check").disabled = true;
 

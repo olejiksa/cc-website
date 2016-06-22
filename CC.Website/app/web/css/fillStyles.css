@@ -3,3 +3,8 @@
 #listView {
     height: 384px;
 }
+
+#input, #input-fake {
+    width: 100%;
+    max-width: none !important;
+}
