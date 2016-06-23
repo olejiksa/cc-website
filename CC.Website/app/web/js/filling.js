@@ -4,7 +4,8 @@
     // Объявление некоторых данных.
     var element = document.body;
     var item, itemIndex, itemsList, g, index;
-    var svg, svgNS, a;
+    var svg, svgNS, a, answerText;
+    var arrayList = [];
 
     index = 0;
 
@@ -47,6 +48,8 @@
 
     // Читает файл, полученный из диалога открытия.
     function change(e) {
+        element.querySelector("#check").disabled = false;
+
         $("svg").empty();
         var file = e.target.files[0];
         if (!file)
@@ -74,6 +77,8 @@
             var question = $(this).find("question").text();
 
             addTerm(answer, question);
+            index = 0;
+            arrayList = [];
             createWord(x, y, orientation, answer, question);
         });
     }
@@ -163,7 +168,10 @@
         var a1 = svg.getElementById(a.id).childNodes[0];
         a1.setAttribute("stroke-width", 3);
 
-        document.getElementById("listView").winControl.selection.set(Number(e.target.parentNode.id));
+        itemIndex = Number(e.target.parentNode.id);
+        document.getElementById("listView").winControl.selection.set(itemIndex);
+
+        checkAnswer(a.firstChild.getAttribute("answer"));
     }
 
     // Передает данные в поля формы для редактирования.
@@ -175,9 +183,93 @@
             b.setAttribute("stroke-width", 1);
         }
 
-        a = svg.getElementById(itemIndex).parentNode;
+        a = svg.getElementById(itemIndex);
         var a1 = svg.getElementById(itemIndex).childNodes[0];
         a1.setAttribute("stroke-width", 3);
+
+        checkAnswer(a.firstChild.getAttribute("answer"));
+    }
+
+    // Проверяет поля текущего термина на пустоту.
+    function checkAnswer(answer) {
+        if (stringIsNullOrWhiteSpace(arrayList[itemIndex])) {
+            $(a).find("*").not("rect, g, line").remove();
+            element.querySelector("#answer").value = '';
+        }
+        else
+            element.querySelector("#answer").value = arrayList[itemIndex];
+
+        if (itemIndex >= 0) {
+            element.querySelector("#answer").readOnly = false;
+            element.querySelector("#answer").maxLength = answer.length;
+        }
+        else {
+            element.querySelector("#answer").readOnly = true;
+        }
+    }
+
+    // Осуществляет перенос слов побуквенно в блок в сетке (заполнение).
+    function inputCheck() {
+        var el = element.querySelector("#answer").value;
+
+        if (el !== '')
+            createLetter(svg.getElementById(itemIndex), el);
+        else
+            createLetter(svg.getElementById(itemIndex), '');
+    }
+
+    // Добавляет символ в блок слова в сетке.
+    function createLetter(block, el) {
+        $(block).find("*").not("rect, g, line").remove();
+
+        for (var i in block.childNodes)
+            if (a.childNodes[i].nodeType === 3)
+                svg.removeChild(i);
+
+        if (block.firstChild.getAttribute("orientation") == "Horizontal") {
+            for (var i = 0; i < el.length; i++) {
+                var label = document.createElementNS(svgNS, "text");
+                label.setAttribute("x", Number(block.firstChild.getAttribute("x")) + 12.5 / 1.5 + 25 * i);
+                label.setAttribute("y", Number(block.firstChild.getAttribute("y")) + 25 / 1.5);
+                var letter = document.createTextNode(el[i].toLowerCase());
+                label.appendChild(letter);
+                block.appendChild(label);
+            }
+        }
+        else {
+            for (var i = 0; i < el.length; i++) {
+                var label = document.createElementNS(svgNS, "text");
+                label.setAttribute("x", Number(block.firstChild.getAttribute("x")) + 12.5 / 1.5);
+                label.setAttribute("y", Number(block.firstChild.getAttribute("y")) + 25 / 1.5 + 25 * i);
+                var letter = document.createTextNode(el[i].toLowerCase());
+                label.appendChild(letter);
+                block.appendChild(label);
+            }
+        }
+
+        arrayList[itemIndex] = el;
+    }
+
+    // Проверяет поле на пустоту.
+    function stringIsNullOrWhiteSpace(string) {
+        if (typeof string === 'undefined' || string == null) return true;
+        return string.replace(/\s/g, '').length < 1;
+    }
+
+    // Проверяет кроссворд на правильность заполнения.
+    function checkFinal() {
+        for (var i = 0; i < itemsList.length; i++) {
+            if (itemsList.getAt(i).text === arrayList[i]) {
+                if (i + 1 !== itemsList.length)
+                    continue;
+                else
+                    alert("Замечательно! Вы заполнили кроссворд абсолютно верно!");
+            }
+            else {
+                alert("При заполнении кроссворда были допущены ошибки.");
+                break;
+            }
+        }
     }
 
     // Запускает процесс страницы веб-приложения.
@@ -185,8 +277,12 @@
         element.querySelector("#input-fake").addEventListener("change", change, false);
         element.querySelector("#input").addEventListener("click", open, false);
         element.querySelector("#input-fake").addEventListener("click", open, false);
+        element.querySelector("#answer").addEventListener("input", inputCheck, false);
 
-        element.querySelector("#check").disabled = true;
+        element.querySelector("#answer").value = "";
+        element.querySelector("#check").disabled = element.querySelector("#answer").readOnly = true;
+
+        element.querySelector("#check").addEventListener("click", checkFinal, false);
 
         listView.addEventListener("iteminvoked", itemClick);
 
