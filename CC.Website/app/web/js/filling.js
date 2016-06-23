@@ -49,8 +49,10 @@
     // Читает файл, полученный из диалога открытия.
     function change(e) {
         element.querySelector("#check").disabled = false;
-
+        index = 0;
+        arrayList = [];
         $("svg").empty();
+
         var file = e.target.files[0];
         if (!file)
             return;
@@ -77,8 +79,6 @@
             var question = $(this).find("question").text();
 
             addTerm(answer, question);
-            index = 0;
-            arrayList = [];
             createWord(x, y, orientation, answer, question);
         });
     }
