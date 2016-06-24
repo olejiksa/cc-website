@@ -176,6 +176,7 @@
 
     // Передает данные в поля формы для редактирования.
     function itemClick(eventInfo) {
+        element.querySelector("#answer").focus();
         itemIndex = eventInfo.detail.itemIndex;
 
         for (var i = 0; i < index; i++) {
@@ -190,7 +191,7 @@
         checkAnswer(a.firstChild.getAttribute("answer"));
     }
 
-    // Проверяет поля текущего термина на пустоту.
+    // Переводит фокус на поле ответа.
     function checkAnswer(answer) {
         if (stringIsNullOrWhiteSpace(arrayList[itemIndex])) {
             $(a).find("*").not("rect, g, line").remove();
@@ -199,13 +200,9 @@
         else
             element.querySelector("#answer").value = arrayList[itemIndex];
 
-        if (itemIndex >= 0) {
-            element.querySelector("#answer").readOnly = false;
-            element.querySelector("#answer").maxLength = answer.length;
-        }
-        else {
-            element.querySelector("#answer").readOnly = true;
-        }
+        element.querySelector("#answer").readOnly = false;
+        element.querySelector("#answer").maxLength = answer.length;
+        element.querySelector("#answer").focus();
     }
 
     // Осуществляет перенос слов побуквенно в блок в сетке (заполнение).
