@@ -5,10 +5,9 @@
     { type: "item", title: "Редактор списков", picture: "app/screenshots/4.jpg" },
     { type: "item", title: "Справочная система", picture: "app/screenshots/5.jpg" }
 ];
-var bindingList = new WinJS.Binding.List(array);
 
 WinJS.Namespace.define("DefaultData", {
-    bindingList: bindingList,
+    bindingList: new WinJS.Binding.List(array),
     array: array
 });
 WinJS.UI.processAll();

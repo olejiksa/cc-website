@@ -1,8 +1,8 @@
 ﻿@import "commonStyles.css";
 
 #common-div {
-    padding: 0;
     display: flex;
+    padding: 0;
 }
 
 #listView {

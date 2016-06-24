@@ -77,11 +77,8 @@
     <Content Include="app\web\js\filling.js" />
     <Content Include="app\web\js\gridEditor.js" />
     <Content Include="wide.png" />
-    <Content Include="app\web\js\about.js" />
-    <Content Include="app\web\js\actions.js" />
-    <Content Include="app\web\js\launch.js" />
     <Content Include="app\web\js\listEditor.js" />
-    <Content Include="app\web\js\secret.js" />
+    <Content Include="app\web\js\transitions.js" />
     <Content Include="app\web\launch.html" />
     <Content Include="app\web\gridEditor.html" />
     <Content Include="app\web\listEditor.html" />
