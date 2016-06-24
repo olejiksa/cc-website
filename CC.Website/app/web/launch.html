@@ -1,7 +1,7 @@
 ﻿<!DOCTYPE html>
 <html lang="ru">
 <head>
-	<meta charset="utf-8">
+    <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE-Edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="application-name" content="Crossword Creator">
@@ -16,8 +16,11 @@
     <script src="../../WinJS/js/base.min.js"></script>
     <script src="../../WinJS/js/ui.min.js"></script>
     <link href="css/commonStyles.css" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
 </head>
 <body>
+    <!--Navbar-->
     <nav class="navbar navbar-default" id="navbar">
         <div class="navbar-local color-accent theme-dark">
             <div class="container">
@@ -39,47 +42,45 @@
                         <li><a href="listEditor.html">Редактор списков</a></li>
                         <li><a href="gridEditor.html">Редактор сетки</a></li>
                         <li><a href="filling.html">Заполнение</a></li>
-                        <li><a href="about.html">О программе</a></li>
+                        <li><a href="about.html">О приложении</a></li>
                     </ul>
                 </div>
             </div>
         </div>
     </nav>
 
-    <div class="page-header" id="page-text-header">
-    <div class="container">
-        <div class="row">
-            <div id="first-section" class="col-xs-24 col-sm-16">
-                <h2>Crossword Creator</h2>
-                <div class="type-sh2">Уникальное средство, с помощью которого вы можете создавать и заполнять великолепные кроссворды</div>
-            	<div class="m-t-xs m-b-md"><a href="../../index.html" class="btn btn-primary">Вернуться на главную страницу</a></div>
+    <!--Header-->
+    <header class="page-header">
+        <div class="container">
+            <div class="row">
+                <div  id="page-text-header" class="col-xs-24 col-sm-16">
+                    <h2>Crossword Creator</h2>
+                    <div class="type-sh2">Уникальное средство, с помощью которого вы можете создавать и заполнять великолепные кроссворды</div>
+                    <div class="m-t-xs m-b-md"><a href="../../index.html" class="btn btn-primary">Вернуться на главную страницу</a></div>
+                </div>
             </div>
         </div>
-    </div>
-    </div>
+    </header>
 
+    <!--General div-->
     <div class="container" id="common-div">
-    <div class="row" id="fonts">
-        <div class="col-xs-24">
-            <div class="row">
-                <div id="second-section" class="col-xs-24">
-                    <h3>Всего три простых этапа</h3>
-                    <ol>
-                        <li>Перейдите в <a href="listEditor.html">редактор списков</a> и составьте список терминов</li>
-                        <li>Перейдите в <a href="gridEditor.html">редактор сетки</a> и составьте из списка кроссворд</li>
-                        <li>Приступите к <a href="filling.html">заполнению</a> кроссворда</li>
-                    </ol>
+        <div class="row" id="fonts">
+            <div class="col-xs-24">
+                <div class="row">
+                    <div class="col-xs-24">
+                        <h3>Всего три простых этапа</h3>
+                        <ol>
+                            <li>Перейдите в <a href="listEditor.html">редактор списков</a> и составьте список терминов</li>
+                            <li>Перейдите в <a href="gridEditor.html">редактор сетки</a> и составьте из списка кроссворд</li>
+                            <li>Приступите к <a href="filling.html">заполнению</a> кроссворда</li>
+                        </ol>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-    </div>
 
-    <a class="back-to-top" href="#top">
-        <i class="glyph glyph-up"></i>
-        <span class="sr-only">Back to top</span>
-    </a>
-
+    <!--Scripts-->
     <script src="../../js/vendor/bootstrap.min.js"></script>
     <script src="../../js/app.js"></script>
     <script src="js/transitions.js"></script>

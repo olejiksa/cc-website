@@ -137,6 +137,7 @@
             var contents = e.target.result;
             parse(contents);
         };
+
         reader.readAsText(file);
         element.querySelector("#file-name").innerHTML = escape(file.name);
     }

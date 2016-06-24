@@ -3,8 +3,8 @@
 
     // Объявление некоторых данных.
     var element = document.body;
-    var item, itemIndex, itemsList, g, index;
-    var svg, svgNS, a, answerText;
+    var itemIndex, itemsList, g, index;
+    var svg, svgNS, a;
     var arrayList = [];
 
     index = 0;
@@ -58,8 +58,7 @@
             return;
         var reader = new FileReader();
         reader.onload = function (e) {
-            var contents = e.target.result;
-            parse(contents);
+            parse(e.target.result);
         };
         reader.readAsText(file);
     }

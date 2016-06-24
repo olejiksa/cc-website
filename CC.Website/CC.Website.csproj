@@ -72,8 +72,6 @@
     <Content Include="app\web\css\fillStyles.css" />
     <Content Include="app\web\css\gridStyles.css" />
     <Content Include="app\web\filling.html" />
-    <Content Include="app\web\images\medium.png" />
-    <Content Include="app\web\images\small.png" />
     <Content Include="app\web\js\filling.js" />
     <Content Include="app\web\js\gridEditor.js" />
     <Content Include="wide.png" />
@@ -106,13 +104,13 @@
     <Content Include="fonts\selawksl.ttf" />
     <Content Include="app\web\css\styles.css" />
     <Content Include="save.ashx" />
+    <Content Include="app\last_version\setup.exe1" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
-    <Content Include="app\web\images\wide.png" />
     <Content Include="WinJS\package.json" />
     <Content Include="WinJS\README.md" />
     <Content Include="WinJS\fonts\Symbols.ttf" />
