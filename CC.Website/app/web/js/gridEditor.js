@@ -28,7 +28,7 @@
         svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
         svg.setAttribute("style", "border: 1px solid #A9A9A9");
         svg.setAttribute("width", "100%");
-        svg.setAttribute("height", 480);
+        svg.setAttribute("height", 528);
         svg.setAttributeNS("http://www.w3.org/2000/xmlns/", "xmlns:xlink", "http://www.w3.org/1999/xlink");
         element.querySelector("#svg-internal-div").appendChild(svg);
 

@@ -36,13 +36,6 @@
     width: 100%;
 }
 
-#secret {
-    text-transform: lowercase;
-    background: -webkit-gradient(linear,left bottom,left top,color-stop(0.2, green),color-stop(0.8, blue)), black;
-    -webkit-background-clip: text;
-    color: transparent;
-}
-
 input[type=file] {
     opacity: 0;
     height: 0px;
@@ -71,18 +64,45 @@ input {
 #svg-div {
     flex: 1;
     padding-left: 12px;
-    min-width: 500px;
+    min-width: 400px;
 }
 
 #buttons-div {
-    margin-top: -6px;
-    max-width: none !important;
-    width: 100% !important;
+    margin-top: 47px;
+    padding-left: 24px;
 }
 
-№buttons-div button {
-    width: auto !important;
-    max-width: none !important;
+#up, #down, #left, #right, #rotate, #delete {
+    font-size: 30px;
+    text-decoration: none;
+}
+
+#left span:first-child,
+#right span:first-child,
+#up span:first-child,
+#down span:first-child,
+#rotate span:first-child,
+#delete span:first-child {
+    margin-left: 17px;
+}
+
+#buttons-div {
+    margin-top: 36px;
+    text-align: center;
+}
+
+#buttons-div a:hover {
+    opacity: 0.5;
+}
+
+#buttons-div span:first-child {
+    display: block;
+    margin-bottom: -16px;
+}
+
+#up span:first-child,
+#down span:first-child {
+    margin-bottom: -22px;
 }
 
 @media (max-width: 768px) {
@@ -108,4 +128,52 @@ input {
     height: auto;
 }
 
+#buttons-div {
+    margin-top: unset;
+    padding-left: 0px;
+}
+
+#up, #down, #left, #right, #rotate, #delete {
+    font-size: 20px;
+    text-decoration: none;
+}
+
+#left span:first-child,
+#right span:first-child,
+#up span:first-child,
+#down span:first-child,
+#rotate span:first-child,
+#delete span:first-child {
+    margin-right: 12px;
+}
+
+#buttons-div {
+    display: flex;
+    margin-bottom: 40px;
+}
+
+#buttons-div a {
+    display: flex;
+}
+
+#buttons-div a:hover {
+    opacity: 0.5;
+}
+
+#buttons-div span:first-child {
+    display: block;
+    margin-bottom: -24px;
+}
+
+#up span:first-child,
+#down span:first-child {
+    margin-bottom: -24px;
+}
+
+}
+
+@media (max-width: 610px) {
+.type-c1 {
+    display: none;
+}
 }
