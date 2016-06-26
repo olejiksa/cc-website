@@ -6,8 +6,12 @@
     var itemIndex, itemsList, g, index;
     var svg, svgNS, a;
     var arrayList = [];
-
     index = 0;
+
+    var fillData = {
+        errorCount: 0,
+        errorIndexes: []
+    };
 
     // Инициализация данных.
     function initialize() {
@@ -217,22 +221,26 @@
             if (a.childNodes[i].nodeType === 3)
                 svg.removeChild(i);
 
-        var label = document.createElementNS(svgNS, "text");
-        var letter = document.createTextNode(el[i].toLowerCase());
-        if (block.firstChild.getAttribute("orientation") == "Horizontal") {
+        if (block.firstChild.getAttribute("orientation") === "Horizontal") {
             for (var i = 0; i < el.length; i++) {
+                var label = document.createElementNS(svgNS, "text");
                 label.setAttribute("x", Number(block.firstChild.getAttribute("x")) + 12.5 / 1.5 + 25 * i);
                 label.setAttribute("y", Number(block.firstChild.getAttribute("y")) + 25 / 1.5);
+                var letter = document.createTextNode(el[i].toLowerCase());
+                label.appendChild(letter);
+                block.appendChild(label);
             }
         }
         else {
             for (var i = 0; i < el.length; i++) {
+                var label = document.createElementNS(svgNS, "text");
                 label.setAttribute("x", Number(block.firstChild.getAttribute("x")) + 12.5 / 1.5);
                 label.setAttribute("y", Number(block.firstChild.getAttribute("y")) + 25 / 1.5 + 25 * i);
+                var letter = document.createTextNode(el[i].toLowerCase());
+                label.appendChild(letter);
+                block.appendChild(label);
             }
         }
-        label.appendChild(letter);
-        block.appendChild(label);
 
         arrayList[itemIndex] = el;
     }
@@ -249,14 +257,38 @@
             if (itemsList.getAt(i).text === arrayList[i]) {
                 if (i + 1 !== itemsList.length)
                     continue;
-                else
+                else if (fillData.errorCount === 0)
                     alert("Замечательно! Вы заполнили кроссворд абсолютно верно!");
+                else {
+                    confirm("При заполнении кроссворда были допущены ошибки. Вы хотите увидеть их?");
+
+                    for (var j = 0; j < index; j++)
+                        svg.getElementById(j).firstChild.setAttribute("stroke-width", 1);
+
+                    for (var z in fillData.errorIndexes)
+                        svg.getElementById(fillData.errorIndexes[z]).firstChild.setAttribute("stroke-width", 3);
+                    break;
+                }
             }
             else {
-                alert("При заполнении кроссворда были допущены ошибки.");
-                break;
+                fillData.errorCount++;
+                fillData.errorIndexes.push(i);
+                if (i + 1 !== itemsList.length)
+                    continue;
+                else {
+                    confirm("При заполнении кроссворда были допущены ошибки. Вы хотите увидеть их?");
+
+                    for (var j = 0; j < index; j++)
+                        svg.getElementById(j).firstChild.setAttribute("stroke-width", 1);
+
+                    for (var z in fillData.errorIndexes)
+                        svg.getElementById(fillData.errorIndexes[z]).firstChild.setAttribute("stroke-width", 3);
+                    break;
+                }
             }
         }
+        fillData.errorCount = 0;
+        fillData.errorIndexes = [];
     }
 
     // Запускает процесс страницы веб-приложения.
