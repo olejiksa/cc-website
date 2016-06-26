@@ -260,13 +260,13 @@
                 else if (fillData.errorCount === 0)
                     alert("Замечательно! Вы заполнили кроссворд абсолютно верно!");
                 else {
-                    confirm("При заполнении кроссворда были допущены ошибки. Вы хотите увидеть их?");
+                    if (confirm("При заполнении кроссворда были допущены ошибки. Вы хотите увидеть их?")) {
+                        for (var j = 0; j < index; j++)
+                            svg.getElementById(j).firstChild.setAttribute("stroke-width", 1);
 
-                    for (var j = 0; j < index; j++)
-                        svg.getElementById(j).firstChild.setAttribute("stroke-width", 1);
-
-                    for (var z in fillData.errorIndexes)
-                        svg.getElementById(fillData.errorIndexes[z]).firstChild.setAttribute("stroke-width", 3);
+                        for (var z in fillData.errorIndexes)
+                            svg.getElementById(fillData.errorIndexes[z]).firstChild.setAttribute("stroke-width", 3);
+                    }
                     break;
                 }
             }
@@ -276,13 +276,13 @@
                 if (i + 1 !== itemsList.length)
                     continue;
                 else {
-                    confirm("При заполнении кроссворда были допущены ошибки. Вы хотите увидеть их?");
+                    if (confirm("При заполнении кроссворда были допущены ошибки. Вы хотите увидеть их?")) {
+                        for (var j = 0; j < index; j++)
+                            svg.getElementById(j).firstChild.setAttribute("stroke-width", 1);
 
-                    for (var j = 0; j < index; j++)
-                        svg.getElementById(j).firstChild.setAttribute("stroke-width", 1);
-
-                    for (var z in fillData.errorIndexes)
-                        svg.getElementById(fillData.errorIndexes[z]).firstChild.setAttribute("stroke-width", 3);
+                        for (var z in fillData.errorIndexes)
+                            svg.getElementById(fillData.errorIndexes[z]).firstChild.setAttribute("stroke-width", 3);
+                    }
                     break;
                 }
             }
