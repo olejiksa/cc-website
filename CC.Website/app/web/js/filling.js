@@ -49,6 +49,8 @@
     // Читает файл, полученный из диалога открытия.
     function change(e) {
         element.querySelector("#check").disabled = false;
+        $("#question").text("Вопрос");
+        $("#answer").text('');
         index = 0;
         arrayList = [];
         $("svg").empty();
@@ -191,6 +193,7 @@
         else
             element.querySelector("#answer").value = arrayList[itemIndex];
 
+        $("#question").text(itemsList.getAt(itemIndex).title);
         element.querySelector("#answer").readOnly = false;
         element.querySelector("#answer").maxLength = answer.length;
         element.querySelector("#answer").focus();
