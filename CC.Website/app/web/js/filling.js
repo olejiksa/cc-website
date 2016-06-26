@@ -87,7 +87,7 @@
         // Создание прямоугольника.
         var rectArray = { "x": x, "y": y, "width": 0, "height": 0, "lines_count": 0 };
 
-        if (orientation == "Vertical") {
+        if (orientation === "Vertical") {
             rectArray["width"] = 25;
             rectArray["height"] = answer.length * 25;
         }
@@ -102,7 +102,19 @@
         g.setAttribute("id", index++);
         svg.appendChild(g);
 
-        g.addEventListener("click", click, false);
+        // Обрабатывает обычный клик на блоке со словом.
+        g.onclick = function (e) {
+            for (var i = 0; i < index; i++)
+                svg.getElementById(i).firstChild.setAttribute("stroke-width", 1);
+
+            a = e.target.parentNode;
+            svg.getElementById(a.id).childNodes[0].setAttribute("stroke-width", 3);
+
+            itemIndex = Number(e.target.parentNode.id);
+            document.getElementById("listView").winControl.selection.set(itemIndex);
+
+            checkAnswer(a.firstChild.getAttribute("answer"));
+        }
 
         var rect = document.createElementNS(svgNS, "rect");
         rect.setAttribute("x", rectArray["x"]);
@@ -134,7 +146,7 @@
                 lineArray["y1"] = rectArray["y"];
                 lineArray["y2"] = lineArray["y1"] + 25;
 
-                if (i == rectArray["lines_count"])
+                if (i === rectArray["lines_count"])
                     break;
             }
             else if (rectArray["width"] < rectArray["height"]) {
@@ -142,7 +154,7 @@
                 lineArray["x2"] = lineArray["x1"] + 25;
                 lineArray["y1"] = lineArray["y2"] = rectArray["y"] + 25 * (i + 1);
 
-                if (i == rectArray["lines_count"])
+                if (i === rectArray["lines_count"])
                     break;
             }
 
@@ -156,36 +168,16 @@
         }
     }
 
-    // Обрабатывает обычный клик на блоке со словом.
-    function click(e) {
-        for (var i = 0; i < index; i++) {
-            var b = svg.getElementById(i).firstChild;
-            b.setAttribute("stroke-width", 1);
-        }
-
-        a = e.target.parentNode;
-        var a1 = svg.getElementById(a.id).childNodes[0];
-        a1.setAttribute("stroke-width", 3);
-
-        itemIndex = Number(e.target.parentNode.id);
-        document.getElementById("listView").winControl.selection.set(itemIndex);
-
-        checkAnswer(a.firstChild.getAttribute("answer"));
-    }
-
     // Передает данные в поля формы для редактирования.
     function itemClick(eventInfo) {
         element.querySelector("#answer").focus();
         itemIndex = eventInfo.detail.itemIndex;
 
-        for (var i = 0; i < index; i++) {
-            var b = svg.getElementById(i).firstChild;
-            b.setAttribute("stroke-width", 1);
-        }
+        for (var i = 0; i < index; i++)
+            svg.getElementById(i).firstChild.setAttribute("stroke-width", 1);
 
         a = svg.getElementById(itemIndex);
-        var a1 = svg.getElementById(itemIndex).childNodes[0];
-        a1.setAttribute("stroke-width", 3);
+        svg.getElementById(itemIndex).childNodes[0].setAttribute("stroke-width", 3);
 
         checkAnswer(a.firstChild.getAttribute("answer"));
     }
