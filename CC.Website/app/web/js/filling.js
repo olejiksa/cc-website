@@ -276,10 +276,14 @@
                 if (i + 1 !== itemsList.length)
                     continue;
                 else {
-                    if (confirm("При заполнении кроссворда были допущены ошибки. Вы хотите увидеть их?")) {
-                        for (var j = 0; j < index; j++)
-                            svg.getElementById(j).firstChild.setAttribute("stroke-width", 1);
+                    document.getElementById("listView").winControl.selection.clear();
+                    $("#answer").attr("value", '');
+                    $("#check").attr("disabled", true);
+                    $("#answer").attr("readOnly", true);
+                    for (var j = 0; j < index; j++)
+                        svg.getElementById(j).firstChild.setAttribute("stroke-width", 1);
 
+                    if (confirm("При заполнении кроссворда были допущены ошибки. Вы хотите увидеть их?")) {
                         for (var z in fillData.errorIndexes)
                             svg.getElementById(fillData.errorIndexes[z]).firstChild.setAttribute("stroke-width", 3);
                     }
