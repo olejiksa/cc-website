@@ -52,7 +52,6 @@
 
     // Читает файл, полученный из диалога открытия.
     function change(e) {
-        element.querySelector("#check").disabled = false;
         $("#question").text("Вопрос");
         $("#answer").text('');
         index = 0;
@@ -205,6 +204,7 @@
 
     // Осуществляет перенос слов побуквенно в блок в сетке (заполнение).
     function inputCheck() {
+        element.querySelector("#check").disabled = false;
         var el = element.querySelector("#answer").value;
 
         if (el !== '')
