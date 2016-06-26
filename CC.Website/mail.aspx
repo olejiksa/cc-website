@@ -14,7 +14,7 @@
     <link type="text/css" rel="stylesheet" href="css/styles.css">
     <link type="text/css" rel="stylesheet" href="css/desktop.css" media="(min-width:1054px)">
     <link type="text/css" rel="prefetch" href="css/styles.css">
-    <link rel="dns-prefetch" href="http://quillaur.azurewebsites.net/">
+    <link rel="dns-prefetch" href="http://crosswordcreator.azurewebsites.net/">
     <!--[if lt IE 9]>
         <link type="text/css" rel="stylesheet" href="css/ie8styles.css" media="screen">
         <script src="js/html5shiv.js"></script>

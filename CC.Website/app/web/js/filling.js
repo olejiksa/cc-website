@@ -217,33 +217,29 @@
             if (a.childNodes[i].nodeType === 3)
                 svg.removeChild(i);
 
+        var label = document.createElementNS(svgNS, "text");
+        var letter = document.createTextNode(el[i].toLowerCase());
         if (block.firstChild.getAttribute("orientation") == "Horizontal") {
             for (var i = 0; i < el.length; i++) {
-                var label = document.createElementNS(svgNS, "text");
                 label.setAttribute("x", Number(block.firstChild.getAttribute("x")) + 12.5 / 1.5 + 25 * i);
                 label.setAttribute("y", Number(block.firstChild.getAttribute("y")) + 25 / 1.5);
-                var letter = document.createTextNode(el[i].toLowerCase());
-                label.appendChild(letter);
-                block.appendChild(label);
             }
         }
         else {
             for (var i = 0; i < el.length; i++) {
-                var label = document.createElementNS(svgNS, "text");
                 label.setAttribute("x", Number(block.firstChild.getAttribute("x")) + 12.5 / 1.5);
                 label.setAttribute("y", Number(block.firstChild.getAttribute("y")) + 25 / 1.5 + 25 * i);
-                var letter = document.createTextNode(el[i].toLowerCase());
-                label.appendChild(letter);
-                block.appendChild(label);
             }
         }
+        label.appendChild(letter);
+        block.appendChild(label);
 
         arrayList[itemIndex] = el;
     }
 
     // Проверяет поле на пустоту.
     function stringIsNullOrWhiteSpace(string) {
-        if (typeof string === 'undefined' || string == null) return true;
+        if (typeof string === "undefined" || string == null) return true;
         return string.replace(/\s/g, '').length < 1;
     }
 
@@ -269,11 +265,11 @@
         element.querySelector("#input").addEventListener("click", open, false);
         element.querySelector("#input-fake").addEventListener("click", open, false);
         element.querySelector("#answer").addEventListener("input", inputCheck, false);
-
-        element.querySelector("#answer").value = "";
-        element.querySelector("#check").disabled = element.querySelector("#answer").readOnly = true;
-
-        element.querySelector("#check").addEventListener("click", checkFinal, false);
+        // Очистка поля ответа и отключение ряда элементов UI.
+        $("#answer").attr("value", '');
+        $("#check").attr("disabled", true);
+        $("#answer").attr("readOnly", true);
+        $("#check").click(checkFinal);
 
         listView.addEventListener("iteminvoked", itemClick);
 
