@@ -71,6 +71,7 @@
     <Content Include="app\web\css\commonStyles.css" />
     <Content Include="app\web\css\fillStyles.css" />
     <Content Include="app\web\css\gridStyles.css" />
+    <Content Include="app\web\favicon.ico" />
     <Content Include="app\web\filling.html" />
     <Content Include="app\web\js\filling.js" />
     <Content Include="app\web\js\gridEditor.js" />
