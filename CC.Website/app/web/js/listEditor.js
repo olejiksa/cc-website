@@ -1,8 +1,10 @@
 ﻿(function () {
     "use strict";
 
-    var item, itemIndex;
-    itemIndex = -1;
+    var data = {
+        item: null,
+        itemIndex: -1
+    };
 
     var itemsList = {};
     var element = document.body;
@@ -20,13 +22,13 @@
     function check() {
         element.querySelector("#addTerm").disabled = (stringIsNullOrWhiteSpace(q.value) || stringIsNullOrWhiteSpace(a.value)) ? true : false;
 
-        if (itemIndex !== -1)
+        if (data.itemIndex !== -1)
         {
             var arrayItem = {
                 title: q.value,
                 text: a.value.toLowerCase()
             }
-            itemsList.splice(itemIndex, 1, arrayItem);
+            itemsList.splice(data.itemIndex, 1, arrayItem);
         }
     }
 
@@ -59,7 +61,7 @@
         element.querySelector("#addTerm").disabled = true;
         element.querySelector("#new").disabled = document.body.querySelector("#save").disabled = false;
 
-        itemIndex = -1;
+        data.itemIndex = -1;
     }
 
     // Добавляет термин в коллекцию, используя готовые параметры.
@@ -74,7 +76,7 @@
         element.querySelector("#addTerm").disabled = true;
         element.querySelector("#new").disabled = document.body.querySelector("#save").disabled = false;
 
-        itemIndex = -1;
+        data.itemIndex = -1;
     }
 
     // Сохраняет файл списка.
@@ -95,27 +97,6 @@
             download(xml, fileName + ".cwtf", "text/plain");
             element.querySelector("#file-name").innerHTML = escape(fileName + ".cwtf");
         }
-
-        /*$.ajax({
-            type: "POST",
-            cache: false,
-            async: true,
-            url: "/save.ashx",
-            contentType: "text/xml; charset=utf-8",
-            dataType: "xml",
-            data: xml,
-            responseType: "text",
-            success: function (data) {
-                element.querySelector("#file-name").innerHTML = escape("list.cwtf");
-                //var elem = document.createElement('a');
-                //elem.setAttribute('href', '/list.cwtf');
-                //elem.setAttribute('download', "list.cwtf");
-                //elem.click();
-            },
-            error: function () {
-                alert("Bug!");
-            }
-        });*/
     }
 
     // Открывает файл.
@@ -162,11 +143,11 @@
 
     // Передает данные в поля формы для редактирования.
     function itemClick(eventInfo) {
-        item = itemsList.getAt(eventInfo.detail.itemIndex);
-        itemIndex = eventInfo.detail.itemIndex;
+        data.item = itemsList.getAt(eventInfo.detail.itemIndex);
+        data.itemIndex = eventInfo.detail.itemIndex;
 
-        q.value = item.title;
-        a.value = item.text;
+        q.value = data.item.title;
+        a.value = data.item.text;
 
         if (!stringIsNullOrWhiteSpace(q.value) && !stringIsNullOrWhiteSpace(a.value))
             element.querySelector("#addTerm").disabled = false;
@@ -174,8 +155,8 @@
 
     // Удаляет выбранный элемент.
     function remove() {
-        itemsList.splice(itemIndex, 1);
-        itemIndex = -1;
+        itemsList.splice(data.itemIndex, 1);
+        data.itemIndex = -1;
 
         q.value = a.value = "";
         element.querySelector("#addTerm").disabled = true;
@@ -204,7 +185,7 @@
             event = event || window.event;
             event.preventDefault ? event.preventDefault() : event.returnValue = false;
 
-            if (itemIndex !== -1) {
+            if (data.itemIndex !== -1) {
                 var anchor = listView;
                 var menu = document.getElementById("menu1").winControl;
                 menu.alignment = "center";
