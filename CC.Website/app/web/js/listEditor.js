@@ -157,7 +157,7 @@
         itemsList.splice(data.itemIndex, 1);
         data.itemIndex = -1;
 
-        q.value = a.value = "";
+        q.value = a.value = '';
         element.querySelector("#addTerm").disabled = true;
 
         if (itemsList.length === 0)

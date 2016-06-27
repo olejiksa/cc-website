@@ -23,11 +23,9 @@
         svg.setAttribute("height", 528);
         svg.setAttributeNS("http://www.w3.org/2000/xmlns/", "xmlns:xlink", "http://www.w3.org/1999/xlink");
         element.querySelector("#svg-internal-div").appendChild(svg);
+        svgNS = svg.namespaceURI;
 
         disable(true);
-
-        // For to be ready.
-        svgNS = svg.namespaceURI;
     }
 
     // Управляет свойством disabled у элементов управления блоком слова в сетке.
@@ -129,7 +127,7 @@
                 label.appendChild(letter);
                 g.appendChild(label);
 
-                if (i == rectArray["lines_count"])
+                if (i === rectArray["lines_count"])
                     break;
             }
             else if (rectArray["width"] < rectArray["height"]) {
@@ -144,7 +142,7 @@
                 label.appendChild(letter);
                 g.appendChild(label);
 
-                if (i == rectArray["lines_count"])
+                if (i === rectArray["lines_count"])
                     break;
             }
 
