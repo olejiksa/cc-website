@@ -61,6 +61,10 @@
         var file = e.target.files[0];
         if (!file)
             return;
+        else if (file.name.split('.').pop() !== "cwgf") {
+            alert("Файл с данным расширением не поддерживается. Обратите внимание, что файлами сетки являются только файлы с расширением *.cwgf.");
+            return;
+        }
         var reader = new FileReader();
         reader.onload = function (e) {
             parse(e.target.result);

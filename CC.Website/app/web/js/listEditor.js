@@ -96,8 +96,11 @@
         }
         xml += "</head>";
 
-        element.querySelector("#file-name").innerHTML = escape("list.cwtf");
-        download(xml, "list.cwtf", "text/plain");
+        var fileName = prompt("Введите название сохраняемого файла.", "List");
+        if (fileName !== null) {
+            download(xml, fileName + ".cwtf", "text/plain");
+            element.querySelector("#file-name").innerHTML = escape(fileName + ".cwtf");
+        }
 
         /*$.ajax({
             type: "POST",

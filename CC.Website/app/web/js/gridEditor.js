@@ -243,6 +243,10 @@
         var file = e.target.files[0];
         if (!file)
             return;
+        else if (file.name.split('.').pop() !== "cwtf") {
+            alert("Файл с данным расширением не поддерживается. Обратите внимание, что файлами списка являются только файлы с расширением *.cwtf.");
+            return;
+        }
         var reader = new FileReader();
         reader.onload = function (e) {
             var contents = e.target.result;
@@ -260,6 +264,10 @@
         var file = e.target.files[0];
         if (!file)
             return;
+        else if (file.name.split('.').pop() !== "cwgf") {
+            alert("Файл с данным расширением не поддерживается. Обратите внимание, что файлами сетки являются только файлы с расширением *.cwgf.");
+            return;
+        }
         var reader = new FileReader();
         reader.onload = function (e) {
             var contents = e.target.result;
@@ -341,6 +349,12 @@
             }
         }
         xml += "</head>";
+
+        var fileName = prompt("Введите название сохраняемого файла.", "Grid");
+        if (fileName !== null) {
+            download(xml, fileName + ".cwgf", "text/plain");
+            element.querySelector("#file-name").innerHTML = escape(fileName + ".cwgf");
+        }
 
         download(xml, "grid.cwgf", "text/plain");
     }
