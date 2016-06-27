@@ -133,6 +133,10 @@
         var file = e.target.files[0];
         if (!file)
             return;
+        else if (file.name.split('.').pop() !== "cwtf") {
+            alert("Файл с данным расширением не поддерживается. Обратите внимание, что с редактором списков совместимы только *.cwtf-файлы.");
+            return;
+        }
         var reader = new FileReader();
         reader.onload = function(e) {
             var contents = e.target.result;
