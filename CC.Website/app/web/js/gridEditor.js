@@ -5,13 +5,11 @@
     var element = document.body;
     var item, itemsList, g, index;
     var svg, svgNS, a;
-
     index = 0;
 
     // Инициализация данных.
     function initialize() {
-        var items = [];
-        itemsList = new WinJS.Binding.List(items);
+        itemsList = new WinJS.Binding.List([]);
 
         var list = document.getElementById("listView").winControl;
         list.itemDataSource = itemsList.dataSource;

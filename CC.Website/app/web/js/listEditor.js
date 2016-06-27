@@ -33,8 +33,7 @@
     }
 
     function initializeTerms() {
-        var items = [];
-        itemsList = new WinJS.Binding.List(items);
+        itemsList = new WinJS.Binding.List([]);
 
         element.querySelector("#file-name").innerHTML = "Безымянный список";
 

@@ -5,7 +5,6 @@
     { type: "item", title: "Редактор списков", picture: "app/screenshots/4.jpg" },
     { type: "item", title: "Справочная система", picture: "app/screenshots/5.jpg" }
 ];
-
 WinJS.Namespace.define("DefaultData", {
     bindingList: new WinJS.Binding.List(array),
     array: array

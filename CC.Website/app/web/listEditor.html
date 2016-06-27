@@ -52,10 +52,6 @@
             <p class="type-sh3"><span class="color-type-secondary" id="file-name">Безымянный список</span></p>
         </div>
     </header>
-    <!--Context menu-->
-    <div id="menu1" data-win-control="WinJS.UI.Menu">
-        <button id="delete" data-win-control="WinJS.UI.MenuCommand" data-win-options="{label:'Удалить', type:'button'}"></button>
-    </div>
     <!--ListView item template-->
     <div class="container">
         <div class="smallListIconTextTemplate" data-win-control="WinJS.Binding.Template">
@@ -77,6 +73,10 @@
             <p><button class="btn btn-default" disabled id="new">Создать</button></p>
             <div id="input-a" class="btn btn-default">Открыть<input id="input-b" type="file" accept=".cwtf"></div>
             <p><button class="btn btn-default" disabled id="save">Сохранить</button></p>
+        </div>
+        <!--Context menu-->
+        <div id="menu1" data-win-control="WinJS.UI.Menu">
+            <button id="delete" data-win-control="WinJS.UI.MenuCommand" data-win-options="{label:'Удалить', type:'button'}"></button>
         </div>
         <!--ListView-->
         <div id="listView"
