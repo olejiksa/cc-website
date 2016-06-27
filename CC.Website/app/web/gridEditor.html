@@ -18,6 +18,7 @@
     <link href="css/gridStyles.css" rel="stylesheet">
 </head>
 <body>
+    <!--Navbar-->
     <nav class="navbar navbar-default">
         <div class="navbar-local color-accent theme-dark">
             <div class="container">
@@ -44,16 +45,15 @@
             </div>
         </div>
     </nav>
-
-    <!--Page header-->
+    <!--Header-->
     <div class="page-header">
         <div class="container" id="page-text-header">
             <h3>Редактор сетки</h3>
         </div>
     </div>
-
-    <!--Common div-->
+    <!--General div-->
     <div id="common-div" class="container">
+        <!--Controls-->
         <div id="controls">
             <p class="type-h4" id="words">Слова</p>
             <a id="input-list" class="btn btn-default">Открыть список<input id="input-listFake" type="file"
@@ -61,8 +61,7 @@
             <a id="input-grid" class="btn btn-default">Открыть сетку<input id="input-gridFake" type="file"
                                                                            accept=".cwgf"></a>
             <button id="save" class="btn btn-default">Сохранить</button>
-
-            <!--ListView ItemTemplate-->
+            <!--ListView item template-->
             <div class="container">
                 <div class="smallListIconTextTemplate" data-win-control="WinJS.Binding.Template">
                     <div class="smallListTextItem">
@@ -72,7 +71,6 @@
                     </div>
                 </div>
             </div>
-
             <!--ListView-->
             <div id="listView"
                  class="win-selectionstylefilled"
@@ -83,14 +81,15 @@
             layout: { type: WinJS.UI.ListLayout }
         }">
             </div>
-
+            <!--Add button-->
             <button id="add" class="btn btn-primary">Добавить</button>
         </div>
-
+        <!--SVG canvas-->
         <div id="svg-div">
             <p class="type-h4" id="words2">Кроссворд</p>
             <div id="svg-internal-div"></div>
         </div>
+        <!--Controls-->
         <div id="buttons-div" onmousedown="return false" onselectstart="return false">
             <p><a id="up"><span class="glyph glyph-chevron-up" aria-hidden="true"></span><span class="type-c1">Вверх</span></a></p>
             <p><a id="down"><span class="glyph glyph-chevron-down" aria-hidden="true"></span><span class="type-c1">Вниз</span></a></p>
@@ -100,7 +99,6 @@
             <p><a id="delete"><span class="glyph glyph-delete" aria-hidden="true"></span><span class="type-c1">Удалить</span></a></p>
         </div>
     </div>
-
     <!--Scripts-->
     <script src="../../js/vendor/bootstrap.min.js"></script>
     <script src="../../js/app.js"></script>
