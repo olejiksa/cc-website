@@ -66,6 +66,7 @@
             parse(e.target.result);
         };
         reader.readAsText(file);
+        document.getElementById("input-fake").value = '';
     }
 
     // Преобразует XML-данные в JavaScript-эквивалент. 
