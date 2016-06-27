@@ -145,6 +145,7 @@
 
         reader.readAsText(file);
         element.querySelector("#file-name").innerHTML = escape(file.name);
+        document.getElementById("input-b").value = '';
     }
 
     // Преобразует XML-коллекцию в её JavaScript-эквивалент. 

@@ -249,6 +249,7 @@
             parseList(contents);
         };
         reader.readAsText(file);
+        document.getElementById("input-listFake").value = '';
     }
 
     // Читает файл сетки, полученный из диалога открытия. 
@@ -265,6 +266,7 @@
             parseGrid(contents);
         };
         reader.readAsText(file);
+        document.getElementById("input-gridFake").value = '';
     }
 
     // Преобразует XML-данные списка в её JavaScript-эквивалент. 
