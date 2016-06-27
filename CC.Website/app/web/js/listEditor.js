@@ -7,18 +7,12 @@
     var itemsList = {};
     var element = document.body;
 
-    var head = document.getElementsByTagName("head")[0];
-    var script = document.createElement("script");
-    script.type = "text/javascript";
-    script.src = "http://danml.com/js/download2.js";
-    head.appendChild(script);
-
     var q = element.querySelector("#question");
     var a = element.querySelector("#answer");
 
     // Проверяет строку на пустоту или пустые пробельные символы.
     function stringIsNullOrWhiteSpace(string) {
-        if (typeof string === 'undefined' || string == null) return true;
+        if (typeof string === "undefined" || string == null) return true;
         return string.replace(/\s/g, '').length < 1;
     }
 

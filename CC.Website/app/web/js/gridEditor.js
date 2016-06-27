@@ -6,12 +6,6 @@
     var item, itemsList, g, index;
     var svg, svgNS, a;
 
-    var head = document.getElementsByTagName("head")[0];
-    var script = document.createElement("script");
-    script.type = "text/javascript";
-    script.src = "http://danml.com/js/download2.js";
-    head.appendChild(script);
-
     index = 0;
 
     // Инициализация данных.
