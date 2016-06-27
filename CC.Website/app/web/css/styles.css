@@ -41,13 +41,6 @@
     display: block;
 }
 
-#secret {
-    text-transform: lowercase;
-    background: -webkit-gradient(linear, left bottom,left top,color-stop(0.2, green),color-stop(0.8, blue)), black;
-    -webkit-background-clip: text;
-    color: transparent;
-}
-
 input[type=file] {
     opacity: 0;
     height: 0px;
