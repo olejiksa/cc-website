@@ -10,6 +10,10 @@
     width: 30px;
 }
 
+#warning {
+    display: none;
+}
+
 .flip-view div img {
     max-height: 100%;
     max-width: 100%;

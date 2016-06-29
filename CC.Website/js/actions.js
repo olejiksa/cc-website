@@ -1,6 +1,6 @@
 ﻿if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phone|Kindle|Silk|Opera Mini/i.test(navigator.userAgent)) {
-    var download = document.querySelector('#download');
-    download.disabled = true;
+    var small = document.querySelector('#warning');
+    small.style.display = 'block';
 }
 
 var i = 0;
