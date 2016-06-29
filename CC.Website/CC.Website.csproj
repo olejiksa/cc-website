@@ -86,6 +86,7 @@
     <Content Include="assets\svg\vk.svg" />
     <Content Include="fonts\LICENSE.txt" />
     <Content Include="js\app.js" />
+    <Content Include="js\downloadScript.js" />
     <Content Include="js\vendor\bootstrap.min.js" />
     <Content Include="mail.aspx" />
     <Content Include="packages.config" />
@@ -141,7 +142,6 @@
     <Content Include="index.html" />
     <Content Include="js\actions.js" />
     <Content Include="js\userAgent.js" />
-    <Content Include="js\downloadScript.js" />
     <Content Include="js\html5shiv.js" />
     <Content Include="screenshots.html" />
     <Content Include="Web.config">

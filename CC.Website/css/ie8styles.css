@@ -2,16 +2,37 @@ body {
     font-family: Segoe UI, sans-serif;
 }
 
-#subwrapper, #iframe {
-    visibility: collapse;
+.wrapper {
+    margin-top: 600px;
 }
 
 #logo {
     display: none;
+}{
 }
 
-#list {
-    margin-top: -410px;
+.flip-view {
+    float: left;
+    margin-right: 20px;
+    width: 500px;
+}
+
+.flip-view div img {
+    max-height: 100%;
+    max-width: 100%;
+}
+
+.flip-view button {
+    margin-bottom: 20px;
+}
+
+.wrapper {
+    display: table;
+}
+
+.wrapper, #list ul {
+    display: table-cell;
+    vertical-align: top;
 }
 
 header {
@@ -178,11 +199,11 @@ input[type=submit]:active {
 }
 
 header {
-        width: auto;
-        height: 80px;
-        background-color: #0071C4;
-        padding: 8px 0px 0px 0px;
-    }
+    width: auto;
+    height: 80px;
+    background-color: #0071C4;
+    padding: 8px 0px 0px 0px;
+}
     
     header div, article, footer {
         margin: auto;
