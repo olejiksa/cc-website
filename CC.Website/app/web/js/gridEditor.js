@@ -345,8 +345,6 @@
             download(xml, fileName + ".cwgf", "text/plain");
             element.querySelector("#file-name").innerHTML = escape(fileName + ".cwgf");
         }
-
-        download(xml, "grid.cwgf", "text/plain");
     }
 
     // Передает данные в поля формы для редактирования.
