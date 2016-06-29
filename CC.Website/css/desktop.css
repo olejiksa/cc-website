@@ -16,6 +16,28 @@ header {
     width: 40px;
 }
 
+#top-content {
+    margin: auto;
+    width: 1024px;
+}
+
+#a1 {
+    float: left;
+    width: 48%;
+}
+
+#a1 h3 {
+    margin: auto;
+}
+
+#a1 section {
+    margin-top: 30px;
+}
+
+#a2 video {
+    margin-left: 20px;
+}
+
 .flip-view {
     float: left;
     margin-right: 20px;
