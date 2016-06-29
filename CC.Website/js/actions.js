@@ -1,4 +1,9 @@
-﻿var i = 0;
+﻿if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phone|Kindle|Silk|Opera Mini/i.test(navigator.userAgent)) {
+    var download = document.querySelector('#download');
+    download.disabled = true;
+}
+
+var i = 0;
 
 var data = [
     { title: 'Главная страница', picture: 'app/screenshots/1.png' },
