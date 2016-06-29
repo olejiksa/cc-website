@@ -5,3 +5,9 @@
 .win-container {
     margin: 0 !important;
 }
+
+.navbar .navbar-toggle, .navbar-form .navbar-toggle {
+    float: right;
+    margin: 0;
+    padding: 0;
+}
