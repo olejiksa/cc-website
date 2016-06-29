@@ -56,6 +56,9 @@
         index = 0;
         arrayList = [];
         $("svg").empty();
+        // Отключение ряда элементов UI.
+        $("#check").attr("disabled", true);
+        $("#answer").attr("readOnly", true);
 
         var file = e.target.files[0];
         if (!file)
