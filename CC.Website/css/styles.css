@@ -93,6 +93,7 @@ span {
     display: block;
     float: left;
     width: 225px;
+    margin-bottom: 5px;
 }
 
 input {
