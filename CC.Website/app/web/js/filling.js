@@ -246,7 +246,7 @@
             }
         }
 
-        arrayList[itemIndex] = el;
+        arrayList[itemIndex] = el.toLowerCase();
     }
 
     // Проверяет поле на пустоту.
@@ -281,9 +281,6 @@
                     continue;
                 else {
                     document.getElementById("listView").winControl.selection.clear();
-                    $("#answer").attr("value", '');
-                    $("#check").attr("disabled", true);
-                    $("#answer").attr("readOnly", true);
                     for (var j = 0; j < index; j++)
                         svg.getElementById(j).firstChild.setAttribute("stroke-width", 1);
 
