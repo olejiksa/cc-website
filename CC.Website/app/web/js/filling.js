@@ -295,7 +295,7 @@
                 }
             }
         }
-        index = itemIndex = -1;
+        itemIndex = -1;
         fillData.errorCount = 0;
         fillData.errorIndexes = [];
     }
