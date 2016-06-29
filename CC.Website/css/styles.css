@@ -75,6 +75,11 @@ footer {
 }
 
 h2 {
+    font-size: 2em;
+    font-weight: 100;
+}
+
+h3 {
     font-size: 1.5em;
     font-weight: 400;
 }

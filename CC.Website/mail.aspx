@@ -61,7 +61,7 @@
         </form>
     </article>
     <article>
-        <h2>Мы в социальных сетях</h2>
+        <h3>Мы в социальных сетях</h3>
         <a href="http://facebook.com/crosswordcreator" target="_blank"><img alt="Facebook" class="socialIcon" src="assets/svg/facebook.svg"></a>
         <a href="http://vk.com/crosswordcreator" target="_blank"><img alt="VK" class="socialIcon" src="assets/svg/vk.svg"></a>
     </article>
