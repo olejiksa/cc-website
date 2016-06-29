@@ -1,7 +1,8 @@
 ﻿if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phone|Kindle|Silk|Opera Mini/i.test(navigator.userAgent)) {
     var small = document.querySelector('#warning');
     small.style.display = 'block';
-    small.style.margin = '0px 0px 20px 0px';
+    var logos = document.querySelector('#logos');
+    logos.style.display = 'none';
 }
 
 var i = 0;
