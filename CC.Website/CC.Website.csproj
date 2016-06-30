@@ -74,6 +74,7 @@
     <Content Include="app\web\filling.html" />
     <Content Include="app\web\js\filling.js" />
     <Content Include="app\web\js\gridEditor.js" />
+    <Content Include="app\web\js\launch.js" />
     <Content Include="assets\tiles\medium.png" />
     <Content Include="assets\tiles\small.png" />
     <Content Include="assets\tiles\wide.png" />

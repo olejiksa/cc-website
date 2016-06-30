@@ -1,7 +1,9 @@
-﻿* {
+﻿/*All*/
+* {
     font-family: Segoe UI;
 }
 
+/*Buttons*/
 button {
     border: none;
     background: #CCCCCC;
@@ -17,6 +19,29 @@ button:hover {
 
 button:active {
     background: #999999;
+    border: none;
+    font-size: 14px;
+    margin: 1px 1px 1px 3px;
+    padding: 0px 13px 0px 13px;
+    height: 30px;
+}
+
+.button-primary {
+    border: none;
+    background: #0078D7;
+    color: white;
+    font-size: 15px;
+    height: 32px;
+    padding: 0px 14px 0px 14px;
+}
+
+.button-primary:hover {
+    border: 2px solid #005CA4;
+    padding: 0px 12px 0px 12px;
+}
+
+.button-primary:active {
+    background: #005CA4;
     border: none;
     font-size: 14px;
     margin: 1px 1px 1px 3px;
