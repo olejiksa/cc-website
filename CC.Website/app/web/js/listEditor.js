@@ -12,12 +12,6 @@
     var q = element.querySelector("#question");
     var a = element.querySelector("#answer");
 
-    // Проверяет строку на пустоту или пустые пробельные символы.
-    function stringIsNullOrWhiteSpace(string) {
-        if (typeof string === "undefined" || string == null) return true;
-        return string.replace(/\s/g, '').length < 1;
-    }
-
     // Проверяет поля текущего термина на пустоту.
     function check() {
         element.querySelector("#addTerm").disabled = (stringIsNullOrWhiteSpace(q.value) || stringIsNullOrWhiteSpace(a.value)) ? true : false;
@@ -50,8 +44,8 @@
     // Добавляет термин в коллекцию из формы.
     function addNewTerm() {
         var term = {
-            title: q.value,
-            text: a.value.toLowerCase()
+            title: q.value.trim(),
+            text: a.value.toLowerCase().trim()
         };
 
         itemsList.push(term);
@@ -66,8 +60,8 @@
     // Добавляет термин в коллекцию, используя готовые параметры.
     function addTerm(answer, question) {
         var term = {
-            title: question,
-            text: answer
+            title: question.trim(),
+            text: answer.trim()
         };
 
         itemsList.push(term);

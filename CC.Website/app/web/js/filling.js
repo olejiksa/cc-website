@@ -252,12 +252,6 @@
         arrayList[itemIndex] = el.toLowerCase();
     }
 
-    // Проверяет поле на пустоту.
-    function stringIsNullOrWhiteSpace(string) {
-        if (typeof string === "undefined" || string == null) return true;
-        return string.replace(/\s/g, '').length < 1;
-    }
-
     // Проверяет кроссворд на правильность заполнения.
     function checkFinal() {
         for (var i = 0; i < itemsList.length; i++) {
