@@ -32,7 +32,7 @@
                 <ul id="menu">
                     <li><a href="index.html">Главная</a></li>
                     <li><a href="download.html">Загрузить</a></li>
-                    <li><a href="help.html" class="selected">Помощь</a></li>
+                    <li><a href="mail.aspx" class="selected">Помощь</a></li>
                 </ul>
             </nav>
         </div>
