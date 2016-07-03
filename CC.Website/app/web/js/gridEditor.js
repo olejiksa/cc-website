@@ -7,7 +7,7 @@
     var svg, svgNS, a;
     index = 0;
 
-    // Инициализация данных.
+    // Инициализирует данные.
     function initialize() {
         itemsList = new WinJS.Binding.List([]);
 

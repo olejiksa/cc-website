@@ -13,7 +13,7 @@
         errorIndexes: []
     };
 
-    // Инициализация данных.
+    // Инициализирует данные.
     function initialize() {
         itemsList = new WinJS.Binding.List([]);
 

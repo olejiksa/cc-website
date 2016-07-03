@@ -6,8 +6,7 @@
         itemIndex: -1
     };
 
-    var itemsList = {};
-
+    var itemsList = new WinJS.Binding.List([]);
     var q = $("#question")[0];
     var a = $("#answer")[0];
 
@@ -18,8 +17,7 @@
         else
             $("#addTerm").attr("disabled", false)
 
-        if (data.itemIndex !== -1)
-        {
+        if (data.itemIndex !== -1) {
             var arrayItem = {
                 title: q.value,
                 text: a.value.toLowerCase()
@@ -28,9 +26,8 @@
         }
     }
 
-    function initializeTerms() {
-        itemsList = new WinJS.Binding.List([]);
-
+    // Инициализирует данные.
+    function initialize() {
         $("#file-name").html("Безымянный список");
 
         var list = document.getElementById("listView").winControl;
@@ -174,7 +171,7 @@
         q.addEventListener("input", check, false);
         a.addEventListener("input", check, false);
 
-        $("#new").click(initializeTerms);
+        $("#new").click(initialize);
         $("#save").click(save);
         
         document.body.querySelector("#input-b").addEventListener("change", change, false);
@@ -195,6 +192,6 @@
             }
         };
 
-        initializeTerms();
+        initialize();
     });
 })());
