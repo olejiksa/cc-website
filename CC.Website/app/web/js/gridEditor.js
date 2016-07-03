@@ -248,9 +248,6 @@
 
     // Читает файл сетки, полученный из диалога открытия. 
     function changeGrid(e) {
-        disable(true);
-        $("svg").empty();
-        index = 0;
         var file = e.target.files[0];
         if (!file)
             return;
@@ -284,6 +281,10 @@
 
     // Преобразует XML-данные сетки в её JavaScript-эквивалент. 
     function parseGrid(xml) {
+        itemsList.length = 0;
+        disable(true);
+        $("svg").empty();
+        index = 0;
         var xmlDoc = $.parseXML(xml);
         var $xml = $(xmlDoc);
 
@@ -296,6 +297,7 @@
             var question = $(this).find("question").text();
 
             addElement(id, x, y, orientation, answer, question);
+            addTerm(answer, question);
         });
     }
 
