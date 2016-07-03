@@ -32,14 +32,16 @@
     function initializeTerms() {
         itemsList = new WinJS.Binding.List([]);
 
-        element.querySelector("#file-name").innerHTML = "Безымянный список";
+        $("#file-name").html("Безымянный список");
 
         var list = document.getElementById("listView").winControl;
         list.itemDataSource = itemsList.dataSource;
         list.itemTemplate = document.querySelector(".smallListIconTextTemplate");
         list.forceLayout();
 
-        element.querySelector("#addTerm").disabled = element.querySelector("#new").disabled = element.querySelector("#save").disabled = true;
+        $("#addTerm").attr("disabled", true);
+        $("#new").attr("disabled", true);
+        $("#save").attr("disabled", true);
 
         q.value = a.value = "";
     }
@@ -54,10 +56,7 @@
         itemsList.push(term);
         q.value = a.value = "";
 
-        element.querySelector("#addTerm").disabled = true;
-        element.querySelector("#new").disabled = document.body.querySelector("#save").disabled = false;
-
-        data.itemIndex = -1;
+        allAdd();
     }
 
     // Добавляет термин в коллекцию, используя готовые параметры.
@@ -69,8 +68,14 @@
 
         itemsList.push(term);
 
-        element.querySelector("#addTerm").disabled = true;
-        element.querySelector("#new").disabled = document.body.querySelector("#save").disabled = false;
+        allAdd();
+    }
+
+    // Общая функция для функций добавления.
+    function allAdd() {
+        $("#addTerm").attr("disabled", true);
+        $("#new").attr("disabled", false);
+        $("#save").attr("disabled", false);
 
         data.itemIndex = -1;
     }
@@ -91,13 +96,13 @@
         var fileName = prompt("Введите название сохраняемого файла.", "List");
         if (fileName !== null) {
             download(xml, fileName + ".cwtf", "text/plain");
-            element.querySelector("#file-name").innerHTML = escape(fileName + ".cwtf");
+            $("#file-name").html(escape(fileName + ".cwtf"));
         }
     }
 
     // Открывает файл.
     function open() {
-        element.querySelector("#input-b").click();
+        $("#input-b").click();
     }
 
     // Читает файл, полученный из диалога открытия. 
@@ -118,7 +123,7 @@
         };
 
         reader.readAsText(file);
-        element.querySelector("#file-name").innerHTML = escape(file.name);
+        $("#file-name").html(escape(fileName + ".cwtf"));
         document.getElementById("input-b").value = '';
     }
 
@@ -146,7 +151,7 @@
         a.value = data.item.text;
 
         if (!stringIsNullOrWhiteSpace(q.value) && !stringIsNullOrWhiteSpace(a.value))
-            element.querySelector("#addTerm").disabled = false;
+            $("#addTerm").attr("disabled", false);
     }
 
     // Удаляет выбранный элемент.
@@ -155,10 +160,12 @@
         data.itemIndex = -1;
 
         q.value = a.value = '';
-        element.querySelector("#addTerm").disabled = true;
+        $("#addTerm").attr("disabled", true);
 
-        if (itemsList.length === 0)
-            element.querySelector("#new").disabled = element.querySelector("#save").disabled = true;
+        if (itemsList.length === 0) {
+            $("#new").attr("disabled", true);
+            $("#save").attr("disabled", true);
+        }
     }
 
     // Запускает процесс страницы веб-приложения.
