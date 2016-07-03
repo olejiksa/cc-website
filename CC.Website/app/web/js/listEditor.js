@@ -1,4 +1,4 @@
-﻿$(document).ready(function () {
+﻿$(document).ready((function () {
     "use strict";
 
     var data = {
@@ -14,7 +14,10 @@
 
     // Проверяет поля текущего термина на пустоту.
     function check() {
-        element.querySelector("#addTerm").disabled = (stringIsNullOrWhiteSpace(q.value) || stringIsNullOrWhiteSpace(a.value)) ? true : false;
+        if (stringIsNullOrWhiteSpace(q.value) || stringIsNullOrWhiteSpace(a.value))
+            $("#addTerm").attr("disabled", true)
+        else
+            $("#addTerm").attr("disabled", false)
 
         if (data.itemIndex !== -1)
         {
@@ -188,4 +191,4 @@
 
         initializeTerms();
     });
-})();
+})());
