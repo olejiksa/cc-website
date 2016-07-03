@@ -7,7 +7,6 @@
     };
 
     var itemsList = {};
-    var element = document.body;
 
     var q = $("#question")[0];
     var a = $("#answer")[0];
@@ -123,7 +122,7 @@
         };
 
         reader.readAsText(file);
-        $("#file-name").html(escape(fileName + ".cwtf"));
+        $("#file-name").html(escape(file.name.split('.')[0]));
         document.getElementById("input-b").value = '';
     }
 
@@ -170,19 +169,19 @@
 
     // Запускает процесс страницы веб-приложения.
     WinJS.UI.processAll().then(function () {
-        element.querySelector("#addTerm").addEventListener("click", addNewTerm, false);
+        $("#addTerm").click(addNewTerm);
         listView.addEventListener("iteminvoked", itemClick);
         q.addEventListener("input", check, false);
         a.addEventListener("input", check, false);
 
-        element.querySelector("#new").addEventListener("click", initializeTerms, false);
-        element.querySelector("#save").addEventListener("click", save, false);
+        $("#new").click(initializeTerms);
+        $("#save").click(save);
         
-        element.querySelector("#input-b").addEventListener("change", change, false);
-        element.querySelector("#input-a").addEventListener("click", open, false);
-        element.querySelector("#input-b").addEventListener("click", open, false);
+        document.body.querySelector("#input-b").addEventListener("change", change, false);
+        document.body.querySelector("#input-a").addEventListener("click", open, false);
+        document.body.querySelector("#input-b").addEventListener("click", open, false);
 
-        element.querySelector("#delete").addEventListener("click", remove, false);
+        $("#delete").click(remove);
 
         listView.oncontextmenu = function (event) {
             event = event || window.event;
