@@ -1,4 +1,4 @@
-﻿(function () {
+﻿$(document).ready(function () {
     "use strict";
 
     var data = {
@@ -9,8 +9,8 @@
     var itemsList = {};
     var element = document.body;
 
-    var q = element.querySelector("#question");
-    var a = element.querySelector("#answer");
+    var q = $("#question")[0];
+    var a = $("#answer")[0];
 
     // Проверяет поля текущего термина на пустоту.
     function check() {
