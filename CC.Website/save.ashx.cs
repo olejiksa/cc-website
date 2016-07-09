@@ -18,7 +18,10 @@ namespace ServerSide
             string requestFromPost = reader.ReadToEnd();
 
             if (!File.Exists(HttpContext.Current.Server.MapPath("list.cwtf")))
+            {
                 File.CreateText(HttpContext.Current.Server.MapPath("list.cwtf"));
+                File.WriteAllText(HttpContext.Current.Server.MapPath("list.cwtf"), requestFromPost);
+            }
             else
             {
                 File.Delete(HttpContext.Current.Server.MapPath("list.cwtf"));
