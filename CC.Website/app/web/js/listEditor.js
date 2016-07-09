@@ -91,9 +91,7 @@
 
         var fileName = prompt("Введите название сохраняемого файла.", "List");
         if (fileName !== null) {
-            var blobObject = new Blob([xml]);
-            window.navigator.msSaveOrOpenBlob(blobObject, fileName + ".cwtf");
-
+            download(xml, fileName + ".cwtf", "text/plain");
             $("#file-name").html(escape(fileName + ".cwtf"));
         }
     }
